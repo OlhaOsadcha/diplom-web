@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoElements": ["ng-deep"]
+    }],
+    "color-no-invalid-hex": true,
+    "unit-no-unknown": true,
+    "unit-whitelist": ["px", "%", "rem"],
+    "shorthand-property-no-redundant-values": true,
+    "property-case": "lower",
+    "no-duplicate-at-import-rules": true
+  }
+}
