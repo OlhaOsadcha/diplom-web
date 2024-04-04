@@ -1,8 +1,14 @@
+$header-margin: 4.25rem;
+
 :host {
   .fixed-header {
     position: fixed;
     top: 0;
     z-index: 1000;
     width: 100%;
+  }
+
+  .header-margin {
+    margin-bottom: $header-margin;
   }
 }

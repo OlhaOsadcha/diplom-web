@@ -9,6 +9,4 @@ import { ShellComponent } from 'components';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'planner';
-}
+export class AppComponent {}
