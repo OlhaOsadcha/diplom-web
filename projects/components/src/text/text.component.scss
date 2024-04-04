@@ -1,0 +1,11 @@
+@import 'font-mixins';
+
+:host {
+  &.bold {
+    font-weight: 600;
+  }
+
+  &.large {
+    @include set-font-size(1.125rem)
+  }
+}

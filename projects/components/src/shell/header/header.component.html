@@ -1,0 +1,15 @@
+<div class="d-flex align-items-center">
+  @if (menuIcon$ | async; as menuIcon) {
+    <button mat-icon-button>
+      <mat-icon>{{ menuIcon }}</mat-icon>
+    </button>
+  }
+  @if (headerTitle$ | async; as headerTitle) {
+    <app-text [large]="true" [bold]="true">{{ headerTitle }}</app-text>
+  }
+</div>
+<div class="right-container">
+  @if (showActionBar$ | async) {
+    <ng-container *ngTemplateOutlet="actionBarTemplate$ | async"></ng-container>
+  }
+</div>

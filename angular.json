@@ -30,7 +30,8 @@
               "projects/planner/src/assets"
             ],
             "styles": [
-              "projects/planner/src/styles.scss"
+              "projects/planner/src/styles.scss",
+              "projects/planner/src/styles/bootstrap-grid.min.css"
             ],
             "scripts": []
           },
