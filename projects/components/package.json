@@ -1,5 +1,5 @@
 {
-  "name": "components",
+  "name": "@lib/components",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^17.3.0",
@@ -9,5 +9,16 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "exports": {
+    "./lib-theme": {
+      "sass": "./theme/theme.scss"
+    },
+    "./colors" : {
+      "sass": "./theme/_theme/colors.scss"
+    },
+    "./variables": {
+      "sass": "./theme/_theme/variables.scss"
+    }
+  }
 }

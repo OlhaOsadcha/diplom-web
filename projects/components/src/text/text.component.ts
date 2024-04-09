@@ -3,7 +3,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 const isTrue = (value: boolean | undefined) => value !== undefined && value !== false;
 
 @Component({
-  selector: 'app-text',
+  selector: 'lib-text',
   templateUrl: 'text.component.html',
   styleUrl: 'text.component.scss',
   standalone: true,

@@ -1,0 +1,58 @@
+@import 'lib-palettes/accent-blue';
+@import 'lib-palettes/accent-green';
+@import 'lib-palettes/accent-red';
+@import 'lib-palettes/accent-yellow';
+@import 'lib-palettes/primary-blue';
+@import 'lib-palettes/primary-yellow';
+@import 'lib-palettes/secondary-grey';
+
+$accent-blue-50: map_get($accent-blue-palette, 50);
+$accent-blue-100: map_get($accent-blue-palette, 100);
+$accent-blue-200: map_get($accent-blue-palette, 200);
+$accent-blue-300: map_get($accent-blue-palette, 300);
+$accent-blue-500: map_get($accent-blue-palette, 500);
+$accent-blue-900: map_get($accent-blue-palette, 900);
+
+$accent-green-50: map_get($accent-green-palette, 50);
+$accent-green-100: map_get($accent-green-palette, 100);
+$accent-green-200: map_get($accent-green-palette, 200);
+$accent-green-300: map_get($accent-green-palette, 300);
+$accent-green-400: map_get($accent-green-palette, 400);
+$accent-green-500: map_get($accent-green-palette, 500);
+$accent-green-900: map_get($accent-green-palette, 900);
+
+$accent-red-50: map_get($accent-red-palette, 50);
+$accent-red-100: map_get($accent-red-palette, 100);
+$accent-red-200: map_get($accent-red-palette, 200);
+$accent-red-300: map_get($accent-red-palette, 300);
+$accent-red-500: map_get($accent-red-palette, 500);
+$accent-red-900: map_get($accent-red-palette, 900);
+
+$accent-yellow-50: map_get($accent-yellow-palette, 50);
+$accent-yellow-100: map_get($accent-yellow-palette, 100);
+$accent-yellow-200: map_get($accent-yellow-palette, 200);
+$accent-yellow-300: map_get($accent-yellow-palette, 300);
+$accent-yellow-500: map_get($accent-yellow-palette, 500);
+$accent-yellow-900: map_get($accent-yellow-palette, 900);
+
+$primary-blue-50: map_get($primary-blue-palette, 50);
+$primary-blue-100: map_get($primary-blue-palette, 100);
+$primary-blue-200: map_get($primary-blue-palette, 200);
+$primary-blue-300: map_get($primary-blue-palette, 300);
+$primary-blue-500: map_get($primary-blue-palette, 500);
+$primary-blue-900: map_get($primary-blue-palette, 900);
+
+$primary-yellow-50: map_get($primary-yellow-palette, 50);
+$primary-yellow-200: map_get($primary-yellow-palette, 200);
+$primary-yellow-300: map_get($primary-yellow-palette, 300);
+$primary-yellow-500: map_get($primary-yellow-palette, 500);
+$primary-yellow-900: map_get($primary-yellow-palette, 900);
+
+$secondary-grey-50: map_get($secondary-grey-palette, 50);
+$secondary-grey-100: map_get($secondary-grey-palette, 100);
+$secondary-grey-200: map_get($secondary-grey-palette, 200);
+$secondary-grey-300: map_get($secondary-grey-palette, 300);
+$secondary-grey-400: map_get($secondary-grey-palette, 400);
+$secondary-grey-500: map_get($secondary-grey-palette, 500);
+$secondary-grey-700: map_get($secondary-grey-palette, 700);
+$secondary-grey-900: map_get($secondary-grey-palette, 900);

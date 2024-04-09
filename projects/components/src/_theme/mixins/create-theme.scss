@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+@function create-theme($primary-blue-palette, $accent-yellow-palette, $accent-red-palette) {
+  $custom-theme-primary: mat.define-palette($primary-blue-palette);
+  $custom-theme-accent: mat.define-palette($accent-yellow-palette);
+  $custom-theme-warn: mat.define-palette($accent-red-palette);
+
+  @return mat.define-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+}

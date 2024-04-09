@@ -1,0 +1,7 @@
+@import '../../../../components/src/_theme/colors';
+
+:host {
+  .bottom-border {
+    border-bottom: solid 1px $secondary-grey-100;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="lib-card-header">
+  @if (title) {
+    <lib-text [bold]="true">{{ title }}</lib-text>
+  }
+  @if (chipConfig) {
+    <lib-chip [color]="chipConfig.color" [label]="chipConfig.displayString"></lib-chip>
+  }
+</div>
+<ng-content></ng-content>

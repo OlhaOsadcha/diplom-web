@@ -23,14 +23,6 @@
             "style": "camelCase"
           }
         ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ],
         "@angular-eslint/no-output-native": "off",
         "@angular-eslint/no-output-rename": "off",
         "@typescript-eslint/consistent-type-definitions": "error",

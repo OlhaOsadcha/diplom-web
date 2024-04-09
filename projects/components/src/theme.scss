@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons|Material+Icons+Outlined');
+@import '_theme/lib-palettes/accent-red';
+@import '_theme/lib-palettes/accent-yellow';
+@import '_theme/lib-palettes/primary-blue';
+@import '_theme/colors';
+@import '_theme/mixins/create-theme';
+@import '_theme/variables';
+
+@include mat.core();
+
+$custom-theme-primary: mat.define-palette($primary-blue-palette);
+$custom-theme-accent: mat.define-palette($accent-yellow-palette);
+$custom-theme-warn: mat.define-palette($accent-red-palette);
+$custom-theme: mat.define-light-theme(
+      (
+        color: (
+          primary: $custom-theme-primary,
+          accent: $custom-theme-accent,
+          warn: $custom-theme-warn,
+        ),
+        typography: mat.define-typography-config(
+          $font-family: 'Roboto, "Open Sans", sans-serif'
+        ),
+        density: 0,
+      )
+);
+
+@include mat.all-component-themes($custom-theme);
+
+body,
+html {
+  font-size: 16px;
+  font-family: Roboto, 'Open Sans', sans-serif;
+  background: $secondary-grey-50;
+  overflow-x: hidden;
+  margin: 0;
+}

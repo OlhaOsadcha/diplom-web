@@ -7,7 +7,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { TextComponent } from '../../text/text.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'lib-header',
   templateUrl: 'header.component.html',
   styleUrl: 'header.component.scss',
   standalone: true,

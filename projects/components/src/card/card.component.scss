@@ -1,0 +1,9 @@
+@import '../_theme/colors';
+
+:host {
+  display: block;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.2);
+  border: solid 1px $secondary-grey-100;
+  background: white;
+}

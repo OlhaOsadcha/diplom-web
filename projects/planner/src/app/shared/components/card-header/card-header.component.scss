@@ -1,0 +1,19 @@
+@import '../../../../styles/_theme/variables';
+
+:host {
+  .lib-card-header {
+    @media screen and (min-width: $screen-width-sm) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 !important;
+    }
+
+    @media screen and (max-width: $screen-width-sm) {
+      lib-chip {
+        margin-top: 0.25rem;
+        margin-right: auto;
+      }
+    }
+  }
+}

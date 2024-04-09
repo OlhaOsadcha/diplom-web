@@ -1,0 +1,63 @@
+@import '../_theme/colors';
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  flex-direction: row;
+  line-height: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  padding: 0 0.75rem;
+
+  &.chip-color-accent-blue {
+    color: white;
+    background: $accent-blue-300;
+    border-color: $accent-blue-300;
+  }
+
+  &.chip-color-accent-green {
+    color: white;
+    background: $accent-green-400;
+    border-color: $accent-green-400;
+  }
+
+  &.chip-color-accent-red {
+    color: white;
+    background: $accent-red-300;
+    border-color: $accent-red-300;
+  }
+
+  &.chip-color-accent-yellow {
+    color: white;
+    background: $accent-yellow-500;
+    border-color: $accent-yellow-500;
+  }
+
+  &.chip-color-primary-blue {
+    color: white;
+    background: $primary-blue-500;
+    border-color: $primary-blue-500;
+  }
+
+  &.chip-color-primary-yellow {
+    color: $secondary-grey-900;
+    background: $primary-yellow-500;
+    border-color: $primary-yellow-500;
+  }
+
+  &.chip-color-secondary-grey {
+    color: white;
+    background: $secondary-grey-700;
+    border-color: $secondary-grey-700;
+  }
+
+  .displayString {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
