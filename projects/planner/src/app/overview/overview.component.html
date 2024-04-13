@@ -1,45 +1,53 @@
-<div class="d-block col-md-8 m-auto pt-3">
-  <lib-card class="d-flex flex-column p-3 mt-5">
-    <app-card-header
-      class="pb-3 bottom-border"
-      [title]="'Profit'"
-      [chipConfig]="chipConfig"></app-card-header>
-    <div class="pt-3">
-      <h1>20k EUR</h1>
+@if (isLoading) {
+  <div class="col-md-8 m-auto pt-3 d-flex align-content-center">
+    <div class="d-flex m-auto">
+      <mat-spinner diameter="28"></mat-spinner>
     </div>
-  </lib-card>
-
-  <lib-card class="d-flex flex-column p-3 mt-5">
-    <app-card-header
-      class="pb-3 bottom-border"
-      [title]="'Income scenario'"
-      [chipConfig]="chipConfig"></app-card-header>
-    <div class="pt-3 card-content">
-      <div>
-        <h2>80k EUR</h2>
+  </div>
+} @else {
+  <div class="d-block col-md-8 m-auto pt-3">
+    <lib-card class="d-flex flex-column p-3 mt-5">
+      <app-card-header
+        class="pb-3 bottom-border"
+        [title]="'Profit'"
+        [chipConfig]="chipConfig"></app-card-header>
+      <div class="pt-3">
+        <h1>20k EUR</h1>
       </div>
+    </lib-card>
 
-      <div
-        class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-        <lib-button type="secondary">View</lib-button>
-      </div>
-    </div>
-  </lib-card>
+    <lib-card class="d-flex flex-column p-3 mt-5">
+      <app-card-header
+        class="pb-3 bottom-border"
+        [title]="'Income scenario'"
+        [chipConfig]="chipConfig"></app-card-header>
+      <div class="pt-3 card-content">
+        <div>
+          <h2>80k EUR</h2>
+        </div>
 
-  <lib-card class="d-flex flex-column p-3 mt-5">
-    <app-card-header
-      class="pb-3 bottom-border"
-      [title]="'Cost of living scenario'"
-      [chipConfig]="chipConfig"></app-card-header>
-    <div class="pt-3 card-content">
-      <div>
-        <h2>60k EUR</h2>
+        <div
+          class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+          <lib-button type="secondary" (click)="onViewIncome()">View</lib-button>
+        </div>
       </div>
+    </lib-card>
 
-      <div
-        class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-        <lib-button type="secondary">View</lib-button>
+    <lib-card class="d-flex flex-column p-3 mt-5">
+      <app-card-header
+        class="pb-3 bottom-border"
+        [title]="'Cost of living scenario'"
+        [chipConfig]="chipConfig"></app-card-header>
+      <div class="pt-3 card-content">
+        <div>
+          <h2>60k EUR</h2>
+        </div>
+
+        <div
+          class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+          <lib-button type="secondary">View</lib-button>
+        </div>
       </div>
-    </div>
-  </lib-card>
-</div>
+    </lib-card>
+  </div>
+}
