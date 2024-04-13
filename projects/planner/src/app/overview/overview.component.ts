@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Router } from '@angular/router';
 import { ButtonComponent, CardComponent } from 'components';
 import { ChipConfig } from 'components';
 import { LIB_COLOR } from 'components';
 import { ShellService } from 'components';
 import { CardHeaderComponent } from '../shared/components/card-header/card-header.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
@@ -15,7 +17,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class OverviewComponent implements OnInit {
   public isLoading: boolean | undefined;
 
-  constructor(private shellService: ShellService) {}
+  constructor(
+    private router: Router,
+    private shellService: ShellService
+  ) {}
 
   public ngOnInit(): void {
     this.setHeaderConfig();
@@ -30,6 +35,7 @@ export class OverviewComponent implements OnInit {
 
   public onViewIncome(): void {
     this.isLoading = true;
+    this.router.navigate(['income']);
   }
 
   private setHeaderConfig(): void {
