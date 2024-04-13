@@ -1,0 +1,47 @@
+@import "../_theme/colors";
+
+@mixin set-button($color) {
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+  min-width: 3.5rem;
+  min-height: 1rem + 0.75rem * 2;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  color: $color;
+  position: relative;
+
+  &[disabled] {
+    color: $secondary-grey-400 !important;
+  }
+
+  ::ng-deep .mdc-button__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@mixin set-border($color, $disabledColor) {
+  border-color: $color;
+
+  &[disabled] {
+    border-color: $disabledColor;
+  }
+}
+
+@mixin set-background($color, $hoverColor, $disabledColor) {
+  background: $color;
+
+  &:hover {
+    background-color: $hoverColor;
+  }
+
+  &[disabled] {
+    background-color: $disabledColor;
+  }
+}

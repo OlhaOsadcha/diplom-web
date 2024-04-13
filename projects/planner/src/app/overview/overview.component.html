@@ -1,4 +1,4 @@
-<div class="d-block col-md-8 m-auto">
+<div class="d-block col-md-8 m-auto pt-3">
   <lib-card class="d-flex flex-column p-3 mt-5">
     <app-card-header
       class="pb-3 bottom-border"
@@ -19,7 +19,10 @@
         <h2>80k EUR</h2>
       </div>
 
-      <div class="action-container"> </div>
+      <div
+        class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+        <lib-button type="secondary">View</lib-button>
+      </div>
     </div>
   </lib-card>
 
@@ -28,8 +31,15 @@
       class="pb-3 bottom-border"
       [title]="'Cost of living scenario'"
       [chipConfig]="chipConfig"></app-card-header>
-    <div class="pt-3">
-      <h2>60k EUR</h2>
+    <div class="pt-3 card-content">
+      <div>
+        <h2>60k EUR</h2>
+      </div>
+
+      <div
+        class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+        <lib-button type="secondary">View</lib-button>
+      </div>
     </div>
   </lib-card>
 </div>

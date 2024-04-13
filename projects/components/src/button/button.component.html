@@ -1,0 +1,25 @@
+<ng-template #content><ng-content></ng-content></ng-template>
+
+@if (type === LIB_BUTTON_TYPE.primary) {
+  <button [disabled]="isDisabled" type="button" mat-flat-button color="primary">
+    <span [matTooltip]="tooltipText"
+      ><ng-container *ngTemplateOutlet="content"></ng-container
+    ></span>
+  </button>
+}
+
+@if (type === LIB_BUTTON_TYPE.secondary) {
+  <button [disabled]="isDisabled" type="button" mat-stroked-button color="primary">
+    <span [matTooltip]="tooltipText"
+      ><ng-container *ngTemplateOutlet="content"></ng-container
+    ></span>
+  </button>
+}
+
+@if (type === LIB_BUTTON_TYPE.tertiary) {
+  <button [disabled]="isDisabled" type="button" mat-button color="primary">
+    <span [matTooltip]="tooltipText"
+      ><ng-container *ngTemplateOutlet="content"></ng-container
+    ></span>
+  </button>
+}

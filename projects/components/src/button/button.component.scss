@@ -1,0 +1,22 @@
+@import "./button-mixins";
+@import "../_theme/colors";
+
+button {
+  // primary
+  &.mat-mdc-unelevated-button.mat-primary {
+    @include set-button(white);
+    @include set-background($primary-blue-500, $primary-blue-300, $secondary-grey-50);
+  }
+
+  // secondary
+  &.mat-mdc-outlined-button.mat-primary {
+    @include set-button($primary-blue-500);
+    @include set-border($primary-blue-500, $secondary-grey-400);
+  }
+
+  // tertiary
+  &.mat-mdc-button.mat-primary {
+    @include set-button($primary-blue-500);
+    @include set-background($secondary-grey-50, $secondary-grey-100, transparent);
+  }
+}

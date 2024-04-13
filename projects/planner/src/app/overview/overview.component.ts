@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardComponent } from 'components';
+import { ButtonComponent, CardComponent } from 'components';
 import { ChipConfig } from 'components';
 import { LIB_COLOR } from 'components';
 import { ShellService } from 'components';
@@ -9,7 +9,7 @@ import { CardHeaderComponent } from '../shared/components/card-header/card-heade
   templateUrl: './overview.component.html',
   styleUrl: 'overview.component.scss',
   standalone: true,
-  imports: [CardComponent, CardHeaderComponent],
+  imports: [CardComponent, CardHeaderComponent, ButtonComponent],
 })
 export class OverviewComponent implements OnInit {
   constructor(private shellService: ShellService) {}
@@ -27,7 +27,7 @@ export class OverviewComponent implements OnInit {
 
   private setHeaderConfig(): void {
     this.shellService.headerConfig = {
-      headerTitle: 'overview',
+      headerTitle: 'Baseline scenario overview',
       menuIcon: 'apps',
     };
   }
