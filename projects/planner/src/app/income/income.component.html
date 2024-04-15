@@ -1,3 +1,24 @@
-<h2>
-  {{ 'app-income works!!!' }}
-</h2>
+<ng-template #actionBar>
+  <lib-button type="secondary">Add Income scenario</lib-button>
+</ng-template>
+
+@if (isLoading) {
+  <div class="col-md-8 m-auto pt-3 d-flex align-content-center">
+    <div class="d-flex m-auto">
+      <mat-spinner diameter="28"></mat-spinner>
+    </div>
+  </div>
+} @else {
+  <div class="d-block col-md-8 m-auto pt-3">
+    @for (income of incomes; track income.id) {
+      <lib-card class="d-flex flex-column p-3 mt-5">
+        <app-card-header class="pb-3 bottom-border" [title]="'Income scenario'"></app-card-header>
+        <div class="pt-3 card-content">
+          <div>
+            <h2>{{ income?.total }}</h2>
+          </div>
+        </div>
+      </lib-card>
+    }
+  </div>
+}

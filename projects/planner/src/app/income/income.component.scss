@@ -1,0 +1,14 @@
+@import '../../../../components/src/_theme/colors';
+
+:host {
+  lib-card {
+    &:hover {
+      cursor: pointer;
+      background-color: $secondary-grey-50;
+    }
+
+    .bottom-border {
+      border-bottom: solid 1px $secondary-grey-100;
+    }
+  }
+}
