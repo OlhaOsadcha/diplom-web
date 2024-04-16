@@ -31,6 +31,10 @@ export class IncomeComponent implements OnInit {
     this.getIncome();
   }
 
+  public onAddIncome(): void {
+    this.shellService.toggleDrawer();
+  }
+
   private getIncome(): void {
     this.isLoading = true;
 

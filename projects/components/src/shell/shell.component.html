@@ -1,5 +1,22 @@
 <div class="fixed-header">
   <lib-header></lib-header>
 </div>
-<div class="header-margin"></div>
-<ng-content></ng-content>
+
+<mat-sidenav-container [hasBackdrop]="drawerBackdrop">
+  <mat-sidenav
+    class="drawer-margin"
+    #matSidenav
+    [mode]="drawerMode"
+    [position]="drawerPosition"
+    [disableClose]="drawerDisableClose"
+    [opened]="drawerIsOpened"
+    [fixedInViewport]="true">
+    <ng-container *ngTemplateOutlet="drawerTemplate"></ng-container>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="header-margin"></div>
+    <div class="content-container container-fluid">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

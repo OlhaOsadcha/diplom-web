@@ -1,11 +1,13 @@
-import { Injectable, TemplateRef } from '@angular/core';
+import { Injectable, signal, TemplateRef, WritableSignal } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { HeaderConfig } from './shell.model';
+import { DrawerMode, DrawerPosition, HeaderConfig } from './shell.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShellService {
+  private matSidenav: MatSidenav | undefined;
   private headerTitle$$: Subject<string> = new BehaviorSubject('');
   private menuIcon$$: Subject<string> = new BehaviorSubject('');
   private menuIconClickHandler$$: Subject<(() => void) | undefined> = new Subject();
@@ -21,6 +23,13 @@ export class ShellService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public actionBarTemplate$: Observable<TemplateRef<any> | null> = this.actionBarTemplate$$;
 
+  public drawerBackdrop: WritableSignal<boolean | undefined> = signal(undefined);
+  public drawerDisableClose: WritableSignal<boolean | undefined> = signal(undefined);
+  public drawerMode: WritableSignal<DrawerMode> = signal('side');
+  public drawerPosition: WritableSignal<DrawerPosition> = signal('start');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public drawerTemplate: WritableSignal<any> = signal(null);
+
   constructor() {}
 
   public set headerConfig(config: HeaderConfig) {
@@ -29,6 +38,7 @@ export class ShellService {
     this.menuIcon = config.menuIcon ? config.menuIcon : '';
     this.menuIconClickHandler = config.menuIconClickHandler || undefined;
     this.showActionBar = config.showActionBar !== undefined ? config.showActionBar : true;
+    this.drawerTemplate.set(config.drawerTemplate ?? null);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,5 +60,21 @@ export class ShellService {
 
   public set showActionBar(show: boolean) {
     this.showActionBar$$.next(show);
+  }
+
+  public registerMatSidenav(matSidenav: MatSidenav | undefined) {
+    this.matSidenav = matSidenav;
+  }
+
+  public toggleDrawer(): void {
+    this.matSidenav?.toggle();
+  }
+
+  public openDrawer(): void {
+    this.matSidenav?.open();
+  }
+
+  public closeDrawer(): void {
+    this.matSidenav?.close();
   }
 }

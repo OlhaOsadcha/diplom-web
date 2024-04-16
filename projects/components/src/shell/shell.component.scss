@@ -1,6 +1,24 @@
+@import '../_theme/variables';
+
 $header-margin: 4.25rem;
+$drawer-margin: 3.6rem;
 
 :host {
+  display: flex;
+  flex-direction: column;
+
+  mat-sidenav {
+    width: 22.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  mat-sidenav-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
   .fixed-header {
     position: fixed;
     top: 0;
@@ -10,5 +28,14 @@ $header-margin: 4.25rem;
 
   .header-margin {
     margin-bottom: $header-margin;
+  }
+
+  .drawer-margin {
+    margin-top: $drawer-margin;
+  }
+
+  .content-container {
+    flex: 1;
+    padding: 0 $grid-gutter-width-half;
   }
 }

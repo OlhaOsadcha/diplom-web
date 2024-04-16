@@ -6,6 +6,7 @@ import { routes } from './app.routes';
 import { PlannerService } from './shared/services/planner.service';
 import { environment } from '../environments/environment';
 import { PlannerServiceMock } from './shared/mock/planner.service.mock';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,5 +22,6 @@ export const appConfig: ApplicationConfig = {
       provide: PlannerService,
       useClass: environment.mocked ? PlannerServiceMock : PlannerService,
     },
+    provideAnimations(),
   ],
 };
