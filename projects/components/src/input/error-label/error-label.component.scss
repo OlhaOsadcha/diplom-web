@@ -1,0 +1,16 @@
+:host {
+  .error {
+    display: flex;
+    align-items: flex-start;
+
+    mat-icon {
+      color: red;
+      margin-right: 0.375rem;
+    }
+
+    span {
+      padding-top: 1px;
+      display: flex;
+    }
+  }
+}

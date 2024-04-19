@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { OverviewComponent } from './overview/overview.component';
-import { IncomeComponent } from './income/income.component';
+import { IncomeComponent } from './income/pages/income/income.component';
 
 export const routes: Routes = [
   {

@@ -1,0 +1,8 @@
+@if (label) {
+  <div class="label-container">
+    <lib-text [bold]="bold">
+      {{ labelTitle }}
+      <ng-content select="lib-tooltip"></ng-content>
+    </lib-text>
+  </div>
+}

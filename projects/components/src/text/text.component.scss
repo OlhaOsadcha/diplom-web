@@ -1,8 +1,13 @@
 @import 'font-mixins';
+@import '../_theme/colors';
 
 :host {
   &.bold {
     font-weight: 600;
+  }
+
+  &.grey {
+    color: $secondary-grey-700;
   }
 
   &.large {

@@ -1,0 +1,20 @@
+<lib-label [label]="label" [optional]="optional">
+  <ng-container ngProjectAs="lib-tooltip">
+    <ng-content select="lib-tooltip"></ng-content>
+  </ng-container>
+</lib-label>
+@for (assistiveText of assistiveTextRows; track $index) {
+  @if (assistiveText) {
+    <lib-text
+      class="assistive-text"
+      [grey]="true"
+      [innerHTML]="assistiveText | libMarkdown"></lib-text>
+  }
+}
+<lib-error-label [errors]="wrapperErrors"></lib-error-label>
+<ng-content></ng-content>
+@for (bottomInfoText of bottomInfoTextRows; track $index) {
+  @if (bottomInfoText) {
+    <lib-text class="bottom-text" [grey]="true">{{ bottomInfoText }}</lib-text>
+  }
+}

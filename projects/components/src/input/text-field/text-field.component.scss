@@ -1,0 +1,62 @@
+@import '../../text/font-mixins';
+@import '../../_theme/lib-palettes/accent-blue';
+@import '../../_theme/lib-palettes/accent-red';
+@import '../../_theme/lib-palettes/secondary-grey';
+
+@mixin invalid-input() {
+  border: 1px solid rgba($base-warn-theme-color, 0.8);
+  caret-color: rgba($base-warn-theme-color, 0.8);
+}
+
+$input-height: 3rem;
+$input-padding: 0.875rem;
+$input-border-radius: 0.25rem;
+
+$input-border-default-color: map-get($secondary-grey-palette, 300);
+$input-border-disabled-color: map-get($secondary-grey-palette, 300);
+$input-border-hover-color: map-get($secondary-grey-palette, 900);
+$input-text-color: map-get($secondary-grey-palette, 900);
+$input-text-disabled-color: map-get($secondary-grey-palette, 300);
+$input-placeholder-color: map-get($secondary-grey-palette, 300);
+$input-background-color: #fff;
+$base-primary-theme-color: map-get($accent-blue-palette, 500);
+$base-warn-theme-color: map-get($accent-red-palette, 500);
+
+::ng-deep input {
+  box-sizing: border-box;
+  width: 100%;
+  height: $input-height;
+  background: $input-background-color;
+  border: 1px solid $input-border-default-color;
+  padding: $input-padding;
+  @include set-font-size(1rem);
+  border-radius: $input-border-radius;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: $input-text-color;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $base-primary-theme-color;
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    border-color: $input-border-disabled-color;
+    background: $input-background-color;
+    color: $input-text-disabled-color;
+  }
+
+  &:hover:not(:focus):not(:disabled) {
+    border-color: $input-border-hover-color;
+  }
+
+  &.ng-invalid.ng-touched:not(:disabled):not(.suppress-validation) {
+    @include invalid-input();
+  }
+}

@@ -1,0 +1,21 @@
+:host {
+  margin-bottom: 2.5rem;
+  display: block;
+  width: 100%;
+
+  .bottom-text {
+    margin-top: 0.43rem;
+    display: block;
+  }
+
+  .assistive-text {
+    margin-top: 0.19rem;
+    margin-bottom: 0.43rem;
+    display: block;
+  }
+
+  lib-error-label {
+    display: block;
+    margin-bottom: 0.43rem;
+  }
+}

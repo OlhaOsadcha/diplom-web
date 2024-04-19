@@ -14,6 +14,11 @@ export class TextComponent {
     this.boldClass = isTrue(value);
   }
 
+  @HostBinding('class.grey') public greyClass: boolean | undefined;
+  @Input() public set grey(value: boolean) {
+    this.greyClass = isTrue(value);
+  }
+
   @HostBinding('class.large') public largeClass: boolean | undefined;
   @Input() public set large(value: boolean) {
     this.largeClass = isTrue(value);
