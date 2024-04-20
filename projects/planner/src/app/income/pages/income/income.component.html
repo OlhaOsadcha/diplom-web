@@ -1,5 +1,7 @@
 <ng-template #actionBar>
-  <lib-button type="secondary" (click)="onAddIncome()">Add Income scenario</lib-button>
+  <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()">
+    Add Income scenario
+  </lib-button>
 </ng-template>
 
 @if (isLoading) {
@@ -24,5 +26,5 @@
 }
 
 <ng-template #drawer>
-  <app-income-detail></app-income-detail>
+  <app-income-detail (cancel)="onCancel()"></app-income-detail>
 </ng-template>

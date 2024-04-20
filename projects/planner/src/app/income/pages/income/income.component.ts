@@ -27,6 +27,7 @@ export class IncomeComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild('drawer', { static: true }) public drawer: TemplateRef<any> | undefined;
 
+  public isEditing: boolean = false;
   public isLoading: boolean | undefined;
   public incomes: IncomeModel[] | undefined;
 
@@ -41,7 +42,13 @@ export class IncomeComponent implements OnInit {
   }
 
   public onAddIncome(): void {
-    this.shellService.toggleDrawer();
+    this.isEditing = true;
+    this.shellService.openDrawer();
+  }
+
+  public onCancel(): void {
+    this.shellService.closeDrawer();
+    this.isEditing = false;
   }
 
   private getIncome(): void {

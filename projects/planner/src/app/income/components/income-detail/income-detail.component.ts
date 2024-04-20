@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ButtonComponent } from 'components';
 import { InputWrapperComponent } from '../../../../../../components/src/input/input-wrapper/input-wrapper.component';
@@ -19,6 +19,8 @@ import { CheckboxComponent } from '../../../../../../components/src/input/checkb
   ],
 })
 export class IncomeDetailComponent implements OnInit {
+  @Output() public cancel = new EventEmitter<void>();
+
   public incomeDetailForm!: UntypedFormGroup;
   constructor(private fb: UntypedFormBuilder) {}
 
@@ -73,6 +75,11 @@ export class IncomeDetailComponent implements OnInit {
 
   public get showSpouse(): boolean {
     return this.incomeDetailForm.get('hasSpouse')?.value;
+  }
+
+  public onCancel(): void {
+    this.cancel.emit();
+    this.incomeDetailForm.reset();
   }
 
   private initForm(): void {
