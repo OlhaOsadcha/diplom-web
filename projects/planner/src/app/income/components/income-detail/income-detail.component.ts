@@ -24,6 +24,51 @@ export class IncomeDetailComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initForm();
+
+    this.incomeDetailForm.get('hasSpouse')?.valueChanges.subscribe({
+      next: value => {
+        if (value === false) {
+          this.incomeDetailForm.get('salarySpouse')?.setValue('');
+          this.incomeDetailForm.get('pensionSpouse')?.setValue('');
+          this.incomeDetailForm.get('arfSpouse')?.setValue('');
+          this.incomeDetailForm.get('depositSpouse')?.setValue('');
+          this.incomeDetailForm.get('otherSpouse')?.setValue('');
+        }
+      },
+    });
+  }
+
+  public get incomeSpouseTotal(): number {
+    return (
+      Number(this.incomeDetailForm.get('salarySpouse')?.value) +
+      Number(this.incomeDetailForm.get('pensionSpouse')?.value) +
+      Number(this.incomeDetailForm.get('arfSpouse')?.value) +
+      Number(this.incomeDetailForm.get('depositSpouse')?.value) +
+      Number(this.incomeDetailForm.get('otherSpouse')?.value)
+    );
+  }
+
+  public get incomeSpouse(): string {
+    return this.incomeSpouseTotal ? ` ${this.incomeSpouseTotal}` : '';
+  }
+
+  public get myIncomeTotal(): number {
+    return (
+      Number(this.incomeDetailForm.get('salary')?.value) +
+      Number(this.incomeDetailForm.get('pension')?.value) +
+      Number(this.incomeDetailForm.get('arf')?.value) +
+      Number(this.incomeDetailForm.get('deposit')?.value) +
+      Number(this.incomeDetailForm.get('other')?.value)
+    );
+  }
+
+  public get myIncome(): string {
+    return this.myIncomeTotal ? ` ${this.myIncomeTotal}` : '';
+  }
+
+  public get totalIncome(): string {
+    const totalIncome = this.myIncomeTotal + this.incomeSpouseTotal;
+    return totalIncome ? ` ${totalIncome}` : '';
   }
 
   public get showSpouse(): boolean {
