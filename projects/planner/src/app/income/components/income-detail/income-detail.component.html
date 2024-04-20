@@ -1,5 +1,35 @@
-<form class="d-flex flex-column pt-5">
-  <lib-input-wrapper [label]="'Your salary'">
+<form class="d-flex flex-column p-4">
+  <div class="pb-3">
+    <h5>Your income</h5>
+  </div>
+  <lib-input-wrapper [label]="'Salary'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Pension'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Approved Retirement Fund'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Deposit'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Spouse'">
+    <lib-checkbox [label]="'I have spouse'"></lib-checkbox>
+  </lib-input-wrapper>
+  <div class="pb-3">
+    <h5>Income of the spouse</h5>
+  </div>
+  <lib-input-wrapper [label]="'Salary'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Pension'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Approved Retirement Fund'">
+    <input *libTextField />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Deposit'">
     <input *libTextField />
   </lib-input-wrapper>
 </form>

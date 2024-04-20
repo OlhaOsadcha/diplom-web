@@ -1,0 +1,9 @@
+:host {
+  .assistive-text {
+    margin-left: 2.75rem;
+  }
+
+  ::ng-deep .mdc-label {
+    margin-bottom: 0;
+  }
+}

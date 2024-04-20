@@ -1,0 +1,9 @@
+<mat-checkbox
+  color="primary"
+  [checked]="_value"
+  [disabled]="disabled"
+  [indeterminate]="indeterminate"
+  (change)="onCheck($event)">
+  <lib-text [block]="true" [lightgrey]="disabled">{{ label }}</lib-text>
+</mat-checkbox>
+<lib-text class="assistive-text" [block]="true" [grey]="true">{{ assistiveText }}</lib-text>

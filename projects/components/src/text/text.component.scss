@@ -6,11 +6,19 @@
     font-weight: 600;
   }
 
+  &.block {
+    display: block;
+  }
+
   &.grey {
     color: $secondary-grey-700;
   }
 
   &.large {
     @include set-font-size(1.125rem)
+  }
+
+  &.lightgrey {
+    color: $secondary-grey-400;
   }
 }
