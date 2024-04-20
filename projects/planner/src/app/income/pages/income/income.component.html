@@ -14,7 +14,10 @@
   <div class="d-block col-md-8 m-auto pt-3">
     @for (income of incomes; track income.id) {
       <lib-card class="d-flex flex-column p-3 mt-5">
-        <app-card-header class="pb-3 bottom-border" [title]="'Income scenario'"></app-card-header>
+        <app-card-header
+          class="pb-3 bottom-border"
+          [title]="'Income scenario'"
+          [chipConfig]="getChipConfig(income)"></app-card-header>
         <div class="pt-3 card-content">
           <div>
             <h2>{{ income?.total }}</h2>
@@ -26,5 +29,7 @@
 }
 
 <ng-template #drawer>
-  <app-income-detail (cancel)="onCancel()"></app-income-detail>
+  <app-income-detail
+    (cancel)="onCancel()"
+    (incomeDetailChange)="onIncomeDetailChange($event)"></app-income-detail>
 </ng-template>

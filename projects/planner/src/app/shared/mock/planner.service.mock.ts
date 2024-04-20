@@ -5,10 +5,45 @@ import { MetadataModel } from '../models/metadata.model';
 import { PlannerService } from '../services/planner.service';
 import { IncomeModel } from '../models/income.model';
 
-const timeout = 2000;
+// const timeout = 2000;
 
 @Injectable()
 export class PlannerServiceMock extends PlannerService {
+  private readonly timeout = 2000;
+  private incomes: IncomeModel[] = [
+    {
+      id: '1',
+      isBaseline: true,
+      total: '80000',
+      salary: '20000',
+      pension: '',
+      arf: '',
+      deposit: '',
+      other: '',
+      hasSpouse: true,
+      salarySpouse: '60000',
+      pensionSpouse: '',
+      arfSpouse: '',
+      depositSpouse: '',
+      otherSpouse: '',
+    },
+    {
+      id: '2',
+      total: '75000',
+      salary: '20000',
+      pension: '',
+      arf: '',
+      deposit: '55000',
+      other: '',
+      hasSpouse: false,
+      salarySpouse: '',
+      pensionSpouse: '',
+      arfSpouse: '',
+      depositSpouse: '',
+      otherSpouse: '',
+    },
+  ];
+
   constructor() {
     super({} as HttpClient);
   }
@@ -17,19 +52,15 @@ export class PlannerServiceMock extends PlannerService {
     return of({
       income: '80k EUR',
       costOfLiving: '60k EUR',
-    }).pipe(delay(timeout));
+    }).pipe(delay(this.timeout));
   }
 
   public override getIncome(): Observable<IncomeModel[]> {
-    return of([
-      {
-        id: '1',
-        total: '80000',
-      },
-      {
-        id: '2',
-        total: '75000',
-      },
-    ]).pipe(delay(timeout));
+    return of(this.incomes).pipe(delay(this.timeout));
+  }
+
+  public override createIncome(income: IncomeModel): Observable<IncomeModel[]> {
+    this.incomes = [...this.incomes, income];
+    return of(this.incomes).pipe(delay(this.timeout));
   }
 }

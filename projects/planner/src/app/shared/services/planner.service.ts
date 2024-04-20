@@ -32,4 +32,10 @@ export class PlannerService {
   public getIncome(): Observable<IncomeModel[]> {
     return this.http.get(this.getUrl('income'), this.requestOptions()) as Observable<IncomeModel[]>;
   }
+
+  public createIncome(income: IncomeModel): Observable<IncomeModel[]> {
+    return this.http.post(this.getUrl('income'), this.requestOptions(income)) as Observable<
+      IncomeModel[]
+    >;
+  }
 }

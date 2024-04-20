@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { ButtonComponent } from 'components';
 import { InputWrapperComponent } from '../../../../../../components/src/input/input-wrapper/input-wrapper.component';
-import { TextFieldDirective } from '../../../../../../components/src/input/text-field/text-field.directive';
 import { CheckboxComponent } from '../../../../../../components/src/input/checkbox/checkbox.component';
+import { ButtonComponent } from 'components';
+import { TextFieldDirective } from '../../../../../../components/src/input/text-field/text-field.directive';
+import { IncomeModel } from '../../../shared/models/income.model';
 
 @Component({
   selector: 'app-income-detail',
@@ -20,6 +21,7 @@ import { CheckboxComponent } from '../../../../../../components/src/input/checkb
 })
 export class IncomeDetailComponent implements OnInit {
   @Output() public cancel = new EventEmitter<void>();
+  @Output() public incomeDetailChange = new EventEmitter<IncomeModel>();
 
   public incomeDetailForm!: UntypedFormGroup;
   constructor(private fb: UntypedFormBuilder) {}
@@ -79,6 +81,25 @@ export class IncomeDetailComponent implements OnInit {
 
   public onCancel(): void {
     this.cancel.emit();
+    this.incomeDetailForm.reset();
+  }
+
+  public onSave(): void {
+    const income = {
+      total: this.totalIncome,
+      salary: this.incomeDetailForm.get('salary')?.value,
+      pension: this.incomeDetailForm.get('pension')?.value,
+      arf: this.incomeDetailForm.get('arf')?.value,
+      deposit: this.incomeDetailForm.get('deposit')?.value,
+      other: this.incomeDetailForm.get('other')?.value,
+      hasSpouse: this.incomeDetailForm.get('hasSpouse')?.value,
+      salarySpouse: this.incomeDetailForm.get('salarySpouse')?.value,
+      pensionSpouse: this.incomeDetailForm.get('pensionSpouse')?.value,
+      arfSpouse: this.incomeDetailForm.get('arfSpouse')?.value,
+      depositSpouse: this.incomeDetailForm.get('depositSpouse')?.value,
+      otherSpouse: this.incomeDetailForm.get('otherSpouse')?.value,
+    };
+    this.incomeDetailChange.emit(income);
     this.incomeDetailForm.reset();
   }
 

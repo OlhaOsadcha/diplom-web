@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs';
-import { ButtonComponent, CardComponent, ShellService } from 'components';
+import { ButtonComponent, CardComponent, LIB_COLOR, ShellService } from 'components';
 import { PlannerService } from '../../../shared/services/planner.service';
 import { IncomeModel } from '../../../shared/models/income.model';
 import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
@@ -41,6 +41,12 @@ export class IncomeComponent implements OnInit {
     this.getIncome();
   }
 
+  public getChipConfig(income: IncomeModel) {
+    return income.isBaseline
+      ? { displayString: 'Baseline', color: LIB_COLOR.accentGreen }
+      : undefined;
+  }
+
   public onAddIncome(): void {
     this.isEditing = true;
     this.shellService.openDrawer();
@@ -49,6 +55,24 @@ export class IncomeComponent implements OnInit {
   public onCancel(): void {
     this.shellService.closeDrawer();
     this.isEditing = false;
+  }
+
+  public onIncomeDetailChange(income: IncomeModel): void {
+    this.shellService.closeDrawer();
+
+    this.isLoading = true;
+    this.plannerService
+      .createIncome(income)
+      .pipe(
+        take(1),
+        finalize(() => {
+          this.isLoading = false;
+          this.isEditing = false;
+        })
+      )
+      .subscribe({
+        next: incomes => (this.incomes = incomes),
+      });
   }
 
   private getIncome(): void {
