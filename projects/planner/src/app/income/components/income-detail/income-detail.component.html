@@ -1,35 +1,51 @@
-<form class="d-flex flex-column p-4">
+<form class="d-flex flex-column p-4" [formGroup]="incomeDetailForm">
   <div class="pb-3">
-    <h5>Your income</h5>
+    <h5>Total income</h5>
+  </div>
+  <div class="pb-3">
+    <h5>My income</h5>
   </div>
   <lib-input-wrapper [label]="'Salary'">
-    <input *libTextField />
+    <input *libTextField formControlName="salary" />
   </lib-input-wrapper>
   <lib-input-wrapper [label]="'Pension'">
-    <input *libTextField />
+    <input *libTextField formControlName="pension" />
   </lib-input-wrapper>
   <lib-input-wrapper [label]="'Approved Retirement Fund'">
-    <input *libTextField />
+    <input *libTextField formControlName="arf" />
   </lib-input-wrapper>
   <lib-input-wrapper [label]="'Deposit'">
-    <input *libTextField />
+    <input *libTextField formControlName="deposit" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Other'">
+    <input *libTextField formControlName="other" />
   </lib-input-wrapper>
   <lib-input-wrapper [label]="'Spouse'">
-    <lib-checkbox [label]="'I have spouse'"></lib-checkbox>
+    <lib-checkbox formControlName="hasSpouse" [label]="'I have spouse'"></lib-checkbox>
   </lib-input-wrapper>
-  <div class="pb-3">
-    <h5>Income of the spouse</h5>
-  </div>
-  <lib-input-wrapper [label]="'Salary'">
-    <input *libTextField />
-  </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Pension'">
-    <input *libTextField />
-  </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Approved Retirement Fund'">
-    <input *libTextField />
-  </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Deposit'">
-    <input *libTextField />
-  </lib-input-wrapper>
+  @if (showSpouse) {
+    <div class="pb-3">
+      <h5>Income of the spouse</h5>
+    </div>
+    <lib-input-wrapper [label]="'Salary'">
+      <input *libTextField formControlName="salarySpouse" />
+    </lib-input-wrapper>
+    <lib-input-wrapper [label]="'Pension'">
+      <input *libTextField formControlName="pensionSpouse" />
+    </lib-input-wrapper>
+    <lib-input-wrapper [label]="'Approved Retirement Fund'">
+      <input *libTextField formControlName="arfSpouse" />
+    </lib-input-wrapper>
+    <lib-input-wrapper [label]="'Deposit'">
+      <input *libTextField formControlName="depositSpouse" />
+    </lib-input-wrapper>
+    <lib-input-wrapper [label]="'Other'">
+      <input *libTextField formControlName="otherSpouse" />
+    </lib-input-wrapper>
+  }
 </form>
+
+<div class="px-4 pb-4 d-flex justify-content-around">
+  <lib-button type="tertiary">{{ 'Cancel' }}</lib-button>
+  <lib-button>{{ 'Save' }}</lib-button>
+</div>
