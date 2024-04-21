@@ -44,4 +44,11 @@ export class PlannerService {
       IncomeModel[]
     >;
   }
+
+  public setBaselineIncome(id: string): Observable<IncomeModel[]> {
+    return this.http.post(
+      this.getUrl(`income/${id}/baseline`),
+      this.requestOptions({ isBaseline: true })
+    ) as Observable<IncomeModel[]>;
+  }
 }

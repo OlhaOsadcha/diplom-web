@@ -65,4 +65,20 @@ export class PlannerServiceMock extends PlannerService {
     this.incomes = this.incomes.filter(i => i.id !== id);
     return of(this.incomes).pipe(delay(this.timeout));
   }
+
+  public override setBaselineIncome(id: string): Observable<IncomeModel[]> {
+    const baseline = this.incomes
+      .filter(i => i.id === id)
+      .map(i => {
+        return { ...i, isBaseline: true };
+      });
+    const temp = this.incomes
+      .filter(i => i.id !== id)
+      .map(i => {
+        return { ...i, isBaseline: false };
+      });
+    this.incomes = [...baseline, ...temp];
+
+    return of(this.incomes).pipe(delay(this.timeout));
+  }
 }

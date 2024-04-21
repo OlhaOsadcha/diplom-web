@@ -20,7 +20,10 @@
           [chipConfig]="getChipConfig(income)">
           @if (getActionVisibility(income)) {
             <ng-container ngProjectAs="[action-bar]">
-              <lib-button type="tertiary" [isDisabled]="isEditing">
+              <lib-button
+                type="tertiary"
+                [isDisabled]="isEditing"
+                (click)="onBaselineIncomeChange(income)">
                 <mat-icon>favorite_outline</mat-icon>
               </lib-button>
               <lib-button type="tertiary" [isDisabled]="isEditing" (click)="onDelete(income)">

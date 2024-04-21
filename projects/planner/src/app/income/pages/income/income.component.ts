@@ -76,6 +76,19 @@ export class IncomeComponent implements OnInit {
       });
   }
 
+  public onBaselineIncomeChange(income: IncomeModel): void {
+    this.isLoading = true;
+    this.plannerService
+      .setBaselineIncome(income.id || '')
+      .pipe(
+        take(1),
+        finalize(() => (this.isLoading = false))
+      )
+      .subscribe({
+        next: incomes => (this.incomes = incomes),
+      });
+  }
+
   public onIncomeDetailChange(income: IncomeModel): void {
     this.shellService.closeDrawer();
 
