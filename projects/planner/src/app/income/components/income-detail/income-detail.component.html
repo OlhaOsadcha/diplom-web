@@ -47,5 +47,5 @@
 
 <div class="px-4 pb-4 d-flex justify-content-around">
   <lib-button type="tertiary" (click)="onCancel()">{{ 'Cancel' }}</lib-button>
-  <lib-button (click)="onSave()">{{ 'Save' }}</lib-button>
+  <lib-button [isDisabled]="isSaveDisabled" (click)="onSave()">{{ 'Save' }}</lib-button>
 </div>

@@ -17,7 +17,18 @@
         <app-card-header
           class="pb-3 bottom-border"
           [title]="'Income scenario'"
-          [chipConfig]="getChipConfig(income)"></app-card-header>
+          [chipConfig]="getChipConfig(income)">
+          @if (getActionVisibility(income)) {
+            <ng-container ngProjectAs="[action-bar]">
+              <lib-button type="tertiary" [isDisabled]="isEditing">
+                <mat-icon>favorite_outline</mat-icon>
+              </lib-button>
+              <lib-button type="tertiary" [isDisabled]="isEditing">
+                <mat-icon>delete_outline</mat-icon>
+              </lib-button>
+            </ng-container>
+          }
+        </app-card-header>
         <div class="pt-3 card-content">
           <div>
             <h2>{{ income?.total }}</h2>

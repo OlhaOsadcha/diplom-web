@@ -2,8 +2,11 @@
   @if (title) {
     <lib-text [bold]="true">{{ title }}</lib-text>
   }
-  @if (chipConfig) {
-    <lib-chip [color]="chipConfig.color" [label]="chipConfig.displayString"></lib-chip>
-  }
+  <div>
+    @if (chipConfig) {
+      <lib-chip [color]="chipConfig.color" [label]="chipConfig.displayString"></lib-chip>
+    }
+    <ng-content select="[action-bar]"></ng-content>
+  </div>
 </div>
 <ng-content></ng-content>

@@ -7,6 +7,7 @@ import { IncomeModel } from '../../../shared/models/income.model';
 import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { IncomeDetailComponent } from '../../components/income-detail/income-detail.component';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-income',
@@ -19,6 +20,7 @@ import { IncomeDetailComponent } from '../../components/income-detail/income-det
     CardHeaderComponent,
     MatProgressSpinner,
     IncomeDetailComponent,
+    MatIcon,
   ],
 })
 export class IncomeComponent implements OnInit {
@@ -45,6 +47,10 @@ export class IncomeComponent implements OnInit {
     return income.isBaseline
       ? { displayString: 'Baseline', color: LIB_COLOR.accentGreen }
       : undefined;
+  }
+
+  public getActionVisibility(income: IncomeModel) {
+    return !income.isBaseline;
   }
 
   public onAddIncome(): void {

@@ -42,6 +42,10 @@ export class IncomeDetailComponent implements OnInit {
     });
   }
 
+  public get isSaveDisabled(): boolean {
+    return this.myIncomeTotal + this.incomeSpouseTotal <= 0;
+  }
+
   public get incomeSpouseTotal(): number {
     return (
       Number(this.incomeDetailForm.get('salarySpouse')?.value) +
