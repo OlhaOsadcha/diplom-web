@@ -23,7 +23,7 @@
               <lib-button type="tertiary" [isDisabled]="isEditing">
                 <mat-icon>favorite_outline</mat-icon>
               </lib-button>
-              <lib-button type="tertiary" [isDisabled]="isEditing">
+              <lib-button type="tertiary" [isDisabled]="isEditing" (click)="onDelete(income)">
                 <mat-icon>delete_outline</mat-icon>
               </lib-button>
             </ng-container>

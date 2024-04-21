@@ -4,6 +4,7 @@ import { delay, Observable, of } from 'rxjs';
 import { MetadataModel } from '../models/metadata.model';
 import { PlannerService } from '../services/planner.service';
 import { IncomeModel } from '../models/income.model';
+import { v4 as uuid4 } from 'uuid';
 
 // const timeout = 2000;
 
@@ -56,7 +57,12 @@ export class PlannerServiceMock extends PlannerService {
   }
 
   public override createIncome(income: IncomeModel): Observable<IncomeModel[]> {
-    this.incomes = [...this.incomes, income];
+    this.incomes = [...this.incomes, { ...income, id: uuid4() }];
+    return of(this.incomes).pipe(delay(this.timeout));
+  }
+
+  public override deleteIncome(id: string): Observable<IncomeModel[]> {
+    this.incomes = this.incomes.filter(i => i.id !== id);
     return of(this.incomes).pipe(delay(this.timeout));
   }
 }
