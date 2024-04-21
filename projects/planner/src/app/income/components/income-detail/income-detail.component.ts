@@ -34,7 +34,6 @@ export class IncomeDetailComponent implements OnInit {
         if (value === false) {
           this.incomeDetailForm.get('salarySpouse')?.setValue('');
           this.incomeDetailForm.get('pensionSpouse')?.setValue('');
-          this.incomeDetailForm.get('arfSpouse')?.setValue('');
           this.incomeDetailForm.get('depositSpouse')?.setValue('');
           this.incomeDetailForm.get('otherSpouse')?.setValue('');
         }
@@ -50,7 +49,6 @@ export class IncomeDetailComponent implements OnInit {
     return (
       Number(this.incomeDetailForm.get('salarySpouse')?.value) +
       Number(this.incomeDetailForm.get('pensionSpouse')?.value) +
-      Number(this.incomeDetailForm.get('arfSpouse')?.value) +
       Number(this.incomeDetailForm.get('depositSpouse')?.value) +
       Number(this.incomeDetailForm.get('otherSpouse')?.value)
     );
@@ -64,7 +62,6 @@ export class IncomeDetailComponent implements OnInit {
     return (
       Number(this.incomeDetailForm.get('salary')?.value) +
       Number(this.incomeDetailForm.get('pension')?.value) +
-      Number(this.incomeDetailForm.get('arf')?.value) +
       Number(this.incomeDetailForm.get('deposit')?.value) +
       Number(this.incomeDetailForm.get('other')?.value)
     );
@@ -93,13 +90,11 @@ export class IncomeDetailComponent implements OnInit {
       total: this.totalIncome,
       salary: this.incomeDetailForm.get('salary')?.value,
       pension: this.incomeDetailForm.get('pension')?.value,
-      arf: this.incomeDetailForm.get('arf')?.value,
       deposit: this.incomeDetailForm.get('deposit')?.value,
       other: this.incomeDetailForm.get('other')?.value,
       hasSpouse: this.incomeDetailForm.get('hasSpouse')?.value,
       salarySpouse: this.incomeDetailForm.get('salarySpouse')?.value,
       pensionSpouse: this.incomeDetailForm.get('pensionSpouse')?.value,
-      arfSpouse: this.incomeDetailForm.get('arfSpouse')?.value,
       depositSpouse: this.incomeDetailForm.get('depositSpouse')?.value,
       otherSpouse: this.incomeDetailForm.get('otherSpouse')?.value,
     };
@@ -111,13 +106,11 @@ export class IncomeDetailComponent implements OnInit {
     this.incomeDetailForm = this.fb.group({
       salary: [''],
       pension: [''],
-      arf: [''],
       deposit: [''],
       other: [''],
       hasSpouse: [false],
       salarySpouse: [''],
       pensionSpouse: [''],
-      arfSpouse: [''],
       depositSpouse: [''],
       otherSpouse: [''],
     });
