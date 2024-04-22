@@ -12,7 +12,7 @@
         [title]="'Profit'"
         [chipConfig]="chipConfig"></app-card-header>
       <div class="pt-3">
-        <h1>20k EUR</h1>
+        <h1>{{ profit || '' | shortAmountOfMoney }}</h1>
       </div>
     </lib-card>
 
@@ -23,7 +23,7 @@
         [chipConfig]="chipConfig"></app-card-header>
       <div class="pt-3 card-content">
         <div>
-          <h2>{{ metadata?.income }}</h2>
+          <h2>{{ metadata?.income || '' | shortAmountOfMoney }}</h2>
         </div>
 
         <div
@@ -40,7 +40,7 @@
         [chipConfig]="chipConfig"></app-card-header>
       <div class="pt-3 card-content">
         <div>
-          <h2>{{ metadata?.costOfLiving }}</h2>
+          <h2>{{ metadata?.costOfLiving || '' | shortAmountOfMoney }}</h2>
         </div>
 
         <div

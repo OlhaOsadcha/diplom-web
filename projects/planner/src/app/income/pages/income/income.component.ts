@@ -8,6 +8,7 @@ import { CardHeaderComponent } from '../../../shared/components/card-header/card
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { IncomeDetailComponent } from '../../components/income-detail/income-detail.component';
 import { MatIcon } from '@angular/material/icon';
+import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.pipe';
 
 @Component({
   selector: 'app-income',
@@ -21,6 +22,7 @@ import { MatIcon } from '@angular/material/icon';
     MatProgressSpinner,
     IncomeDetailComponent,
     MatIcon,
+    ShortAmountMoneyPipe,
   ],
 })
 export class IncomeComponent implements OnInit {

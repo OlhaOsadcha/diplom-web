@@ -31,12 +31,11 @@
               </lib-button>
             </ng-container>
           }
-        </app-card-header>
-        <div class="pt-3 card-content">
           <div>
-            <h2>{{ income?.total }}</h2>
+            <h2>{{ income?.total || '' | shortAmountOfMoney }}</h2>
           </div>
-        </div>
+        </app-card-header>
+        <div class="pt-3"> content </div>
       </lib-card>
     }
   </div>

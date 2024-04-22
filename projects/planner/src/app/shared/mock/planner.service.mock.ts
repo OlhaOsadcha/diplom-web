@@ -47,8 +47,8 @@ export class PlannerServiceMock extends PlannerService {
 
   public override getMetadata(): Observable<MetadataModel> {
     return of({
-      income: '80k EUR',
-      costOfLiving: '60k EUR',
+      income: '80000',
+      costOfLiving: '60000',
     }).pipe(delay(this.timeout));
   }
 

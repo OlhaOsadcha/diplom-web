@@ -9,13 +9,20 @@ import { ShellService } from 'components';
 import { CardHeaderComponent } from '../shared/components/card-header/card-header.component';
 import { MetadataModel } from '../shared/models/metadata.model';
 import { PlannerService } from '../shared/services/planner.service';
+import { ShortAmountMoneyPipe } from '../shared/pipes/short-amount-money.pipe';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrl: 'overview.component.scss',
   standalone: true,
-  imports: [MatProgressSpinnerModule, CardComponent, CardHeaderComponent, ButtonComponent],
+  imports: [
+    MatProgressSpinnerModule,
+    CardComponent,
+    CardHeaderComponent,
+    ButtonComponent,
+    ShortAmountMoneyPipe,
+  ],
 })
 export class OverviewComponent implements OnInit {
   public isLoading: boolean | undefined;
@@ -37,6 +44,11 @@ export class OverviewComponent implements OnInit {
       displayString: 'Baseline',
       color: LIB_COLOR.accentGreen,
     };
+  }
+
+  public get profit(): string {
+    const profit = Number(this.metadata?.income) - Number(this.metadata?.costOfLiving);
+    return profit.toString();
   }
 
   public onViewIncome(): void {
