@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs';
-import { ButtonComponent, CardComponent, LIB_COLOR, ShellService } from 'components';
+import { ButtonComponent, CardComponent, LIB_COLOR, ShellService, TextComponent } from 'components';
 import { PlannerService } from '../../../shared/services/planner.service';
 import { IncomeModel } from '../../../shared/models/income.model';
 import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
@@ -23,6 +23,7 @@ import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.p
     IncomeDetailComponent,
     MatIcon,
     ShortAmountMoneyPipe,
+    TextComponent,
   ],
 })
 export class IncomeComponent implements OnInit {

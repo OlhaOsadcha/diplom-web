@@ -9,7 +9,7 @@
     <lib-card class="d-flex flex-column p-3 mt-5">
       <app-card-header
         class="pb-3 bottom-border"
-        [title]="'Profit'"
+        [title]="'Expected profit scenario'"
         [chipConfig]="chipConfig"></app-card-header>
       <div class="pt-3">
         <h1>{{ profit || '' | shortAmountOfMoney }}</h1>
@@ -28,7 +28,7 @@
 
         <div
           class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-          <lib-button type="secondary" (click)="onViewIncome()">View</lib-button>
+          <lib-button type="secondary" (click)="onViewIncome()">View all</lib-button>
         </div>
       </div>
     </lib-card>
@@ -45,7 +45,7 @@
 
         <div
           class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-          <lib-button type="secondary">View</lib-button>
+          <lib-button type="secondary">View all</lib-button>
         </div>
       </div>
     </lib-card>
