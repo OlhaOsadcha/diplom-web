@@ -39,6 +39,12 @@ export class PlannerService {
     >;
   }
 
+  public updateIncome(income: IncomeModel): Observable<IncomeModel[]> {
+    return this.http.put(this.getUrl('income'), this.requestOptions(income)) as Observable<
+      IncomeModel[]
+    >;
+  }
+
   public deleteIncome(id: string): Observable<IncomeModel[]> {
     return this.http.delete(this.getUrl(`income/${id}`), this.requestOptions()) as Observable<
       IncomeModel[]

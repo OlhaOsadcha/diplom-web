@@ -9,6 +9,14 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { IncomeDetailComponent } from '../../components/income-detail/income-detail.component';
 import { MatIcon } from '@angular/material/icon';
 import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.pipe';
+import { ObjectValues } from '../../../../../../components/src/utils/typescript-utils';
+
+const MODE = {
+  New: 'new',
+  Existing: 'existing',
+} as const;
+
+type Mode = ObjectValues<typeof MODE>;
 
 @Component({
   selector: 'app-income',
@@ -32,9 +40,11 @@ export class IncomeComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild('drawer', { static: true }) public drawer: TemplateRef<any> | undefined;
 
+  public income: IncomeModel | undefined;
   public isEditing: boolean = false;
   public isLoading: boolean | undefined;
   public incomes: IncomeModel[] | undefined;
+  private mode: Mode | undefined;
 
   constructor(
     private plannerService: PlannerService,
@@ -57,6 +67,15 @@ export class IncomeComponent implements OnInit {
   }
 
   public onAddIncome(): void {
+    this.mode = MODE.New;
+    this.income = {};
+    this.isEditing = true;
+    this.shellService.openDrawer();
+  }
+
+  public onUpdateIncome(income: IncomeModel): void {
+    this.mode = MODE.Existing;
+    this.income = income;
     this.isEditing = true;
     this.shellService.openDrawer();
   }
@@ -96,8 +115,13 @@ export class IncomeComponent implements OnInit {
     this.shellService.closeDrawer();
 
     this.isLoading = true;
-    this.plannerService
-      .createIncome(income)
+
+    const updateState =
+      this.mode === MODE.New
+        ? this.plannerService.createIncome(income)
+        : this.plannerService.updateIncome(income);
+
+    updateState
       .pipe(
         take(1),
         finalize(() => {

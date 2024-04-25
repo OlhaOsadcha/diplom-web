@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { InputWrapperComponent } from '../../../../../../components/src/input/input-wrapper/input-wrapper.component';
 import { CheckboxComponent } from '../../../../../../components/src/input/checkbox/checkbox.component';
@@ -20,15 +20,18 @@ import { IncomeModel } from '../../../shared/models/income.model';
   ],
 })
 export class IncomeDetailComponent implements OnInit {
+  @Input() public set incomeModel(incomeModel: IncomeModel | undefined) {
+    this.incomeModelId = incomeModel?.id;
+    this.initForm(incomeModel);
+  }
   @Output() public cancel = new EventEmitter<void>();
   @Output() public incomeDetailChange = new EventEmitter<IncomeModel>();
 
   public incomeDetailForm!: UntypedFormGroup;
+  private incomeModelId: string | undefined;
   constructor(private fb: UntypedFormBuilder) {}
 
   public ngOnInit(): void {
-    this.initForm();
-
     this.incomeDetailForm.get('hasSpouse')?.valueChanges.subscribe({
       next: value => {
         if (value === false) {
@@ -87,6 +90,7 @@ export class IncomeDetailComponent implements OnInit {
 
   public onSave(): void {
     const income = {
+      id: this.incomeModelId,
       total: this.totalIncome,
       salary: this.incomeDetailForm.get('salary')?.value,
       pension: this.incomeDetailForm.get('pension')?.value,
@@ -102,17 +106,17 @@ export class IncomeDetailComponent implements OnInit {
     this.incomeDetailForm.reset();
   }
 
-  private initForm(): void {
+  private initForm(income?: IncomeModel): void {
     this.incomeDetailForm = this.fb.group({
-      salary: [''],
-      pension: [''],
-      deposit: [''],
-      other: [''],
-      hasSpouse: [false],
-      salarySpouse: [''],
-      pensionSpouse: [''],
-      depositSpouse: [''],
-      otherSpouse: [''],
+      salary: [income?.salary || ''],
+      pension: [income?.pension || ''],
+      deposit: [income?.deposit || ''],
+      other: [income?.other || ''],
+      hasSpouse: [income?.hasSpouse || false],
+      salarySpouse: [income?.salarySpouse || ''],
+      pensionSpouse: [income?.pensionSpouse || ''],
+      depositSpouse: [income?.depositSpouse || ''],
+      otherSpouse: [income?.otherSpouse || ''],
     });
   }
 }

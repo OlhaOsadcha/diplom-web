@@ -61,6 +61,17 @@ export class PlannerServiceMock extends PlannerService {
     return of(this.incomes).pipe(delay(this.timeout));
   }
 
+  public override updateIncome(income: IncomeModel): Observable<IncomeModel[]> {
+    this.incomes = this.incomes.map(i => {
+      if (i.id === income.id) {
+        return { ...i, ...income };
+      }
+      return i;
+    });
+
+    return of(this.incomes).pipe(delay(this.timeout));
+  }
+
   public override deleteIncome(id: string): Observable<IncomeModel[]> {
     this.incomes = this.incomes.filter(i => i.id !== id);
     return of(this.incomes).pipe(delay(this.timeout));

@@ -13,7 +13,7 @@
 } @else {
   <div class="d-block col-md-8 m-auto pt-3">
     @for (income of incomes; track income.id) {
-      <lib-card class="d-flex flex-column p-3 mt-5">
+      <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateIncome(income)">
         <app-card-header
           class="pb-3 bottom-border"
           [title]="'Income scenario'"
@@ -116,6 +116,7 @@
 
 <ng-template #drawer>
   <app-income-detail
+    [incomeModel]="income"
     (cancel)="onCancel()"
     (incomeDetailChange)="onIncomeDetailChange($event)"></app-income-detail>
 </ng-template>
