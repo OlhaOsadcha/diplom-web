@@ -11,43 +11,17 @@ import { v4 as uuid4 } from 'uuid';
 @Injectable()
 export class PlannerServiceMock extends PlannerService {
   private readonly timeout = 2000;
-  private incomes: IncomeModel[] = [
-    {
-      id: '1',
-      isBaseline: true,
-      total: '80000',
-      salary: '20000',
-      pension: '5000',
-      deposit: '4000',
-      other: '3000',
-      hasSpouse: true,
-      salarySpouse: '60000',
-      pensionSpouse: '5000',
-      depositSpouse: '4000',
-      otherSpouse: '3000',
-    },
-    {
-      id: '2',
-      total: '75000',
-      salary: '20000',
-      pension: '',
-      deposit: '55000',
-      other: '',
-      hasSpouse: false,
-      salarySpouse: '',
-      pensionSpouse: '',
-      depositSpouse: '',
-      otherSpouse: '',
-    },
-  ];
+  private incomes: IncomeModel[] = [];
 
   constructor() {
     super({} as HttpClient);
   }
 
   public override getMetadata(): Observable<MetadataModel> {
+    const incomeTotalBaseline = this.incomes.find(i => i.isBaseline)?.total;
+
     return of({
-      income: '80000',
+      income: incomeTotalBaseline,
       costOfLiving: '60000',
     }).pipe(delay(this.timeout));
   }
@@ -57,7 +31,8 @@ export class PlannerServiceMock extends PlannerService {
   }
 
   public override createIncome(income: IncomeModel): Observable<IncomeModel[]> {
-    this.incomes = [...this.incomes, { ...income, id: uuid4() }];
+    const newIncome = this.incomes.length ? income : { ...income, isBaseline: true };
+    this.incomes = [...this.incomes, { ...newIncome, id: uuid4() }];
     return of(this.incomes).pipe(delay(this.timeout));
   }
 

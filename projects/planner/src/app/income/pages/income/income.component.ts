@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs';
 import { ButtonComponent, CardComponent, LIB_COLOR, ShellService, TextComponent } from 'components';
@@ -34,7 +34,7 @@ type Mode = ObjectValues<typeof MODE>;
     TextComponent,
   ],
 })
-export class IncomeComponent implements OnInit {
+export class IncomeComponent implements OnInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild('actionBar', { static: true }) public actionBar: TemplateRef<any> | undefined;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,6 +54,10 @@ export class IncomeComponent implements OnInit {
   public ngOnInit(): void {
     this.setHeaderConfig();
     this.getIncome();
+  }
+
+  public ngOnDestroy() {
+    this.shellService.closeDrawer();
   }
 
   public getChipConfig(income: IncomeModel) {

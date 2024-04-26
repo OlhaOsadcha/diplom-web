@@ -1,7 +1,9 @@
 <ng-template #actionBar>
-  <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()">
-    Add Income scenario
-  </lib-button>
+  @if (incomes?.length) {
+    <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()">
+      Add Income scenario
+    </lib-button>
+  }
 </ng-template>
 
 @if (isLoading) {
@@ -12,104 +14,118 @@
   </div>
 } @else {
   <div class="d-block col-md-8 m-auto pt-3">
-    @for (income of incomes; track income.id) {
-      <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateIncome(income)">
-        <app-card-header
-          class="pb-3 bottom-border"
-          [title]="'Income scenario'"
-          [chipConfig]="getChipConfig(income)">
-          @if (getActionVisibility(income)) {
-            <ng-container ngProjectAs="[action-bar]">
-              <lib-button
-                type="tertiary"
-                [isDisabled]="isEditing"
-                (click)="onBaselineIncomeChange(income)">
-                <mat-icon>favorite_outline</mat-icon>
-              </lib-button>
-              <lib-button type="tertiary" [isDisabled]="isEditing" (click)="onDelete(income)">
-                <mat-icon>delete_outline</mat-icon>
-              </lib-button>
-            </ng-container>
-          }
-          <div>
-            <h2>{{ income?.total || '' | shortAmountOfMoney }}</h2>
+    @if (!incomes?.length) {
+      <lib-card class="d-flex flex-column p-3 mt-5">
+        <app-card-header class="pb-3 bottom-border" [title]="'Income scenario'"></app-card-header>
+        <div class="pt-3 card-content">
+          <div
+            class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+            <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()"
+              >Add Income scenario</lib-button
+            >
           </div>
-        </app-card-header>
-        <div class="container pt-3">
-          <div class="row">
-            <div class="col-6">
-              <div class="d-flex">
-                <mat-icon>credit_card</mat-icon>
-                @if (income.salary) {
-                  <lib-text class="pl-2">
-                    salary {{ income.salary || '' | shortAmountOfMoney }}
-                  </lib-text>
-                }
-              </div>
-              <div class="d-flex">
-                <mat-icon>payments</mat-icon>
-                @if (income.pension) {
-                  <lib-text class="pl-2">
-                    pension {{ income.pension || '' | shortAmountOfMoney }}
-                  </lib-text>
-                }
-              </div>
-              <div class="d-flex">
-                <mat-icon>account_balance</mat-icon>
-                @if (income.deposit) {
-                  <lib-text class="pl-2">
-                    deposit {{ income.deposit || '' | shortAmountOfMoney }}
-                  </lib-text>
-                }
-              </div>
-              <div class="d-flex">
-                <mat-icon>topic</mat-icon>
-                @if (income.other) {
-                  <lib-text class="pl-2">
-                    other {{ income.other || '' | shortAmountOfMoney }}
-                  </lib-text>
-                }
-              </div>
+        </div>
+      </lib-card>
+    } @else {
+      @for (income of incomes; track income.id) {
+        <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateIncome(income)">
+          <app-card-header
+            class="pb-3 bottom-border"
+            [title]="'Income scenario'"
+            [chipConfig]="getChipConfig(income)">
+            @if (getActionVisibility(income)) {
+              <ng-container ngProjectAs="[action-bar]">
+                <lib-button
+                  type="tertiary"
+                  [isDisabled]="isEditing"
+                  (click)="onBaselineIncomeChange(income)">
+                  <mat-icon>favorite_outline</mat-icon>
+                </lib-button>
+                <lib-button type="tertiary" [isDisabled]="isEditing" (click)="onDelete(income)">
+                  <mat-icon>delete_outline</mat-icon>
+                </lib-button>
+              </ng-container>
+            }
+            <div>
+              <h2>{{ income?.total || '' | shortAmountOfMoney }}</h2>
             </div>
-            @if (income.hasSpouse) {
-              <div>
+          </app-card-header>
+          <div class="container pt-3">
+            <div class="row">
+              <div class="col-6">
                 <div class="d-flex">
                   <mat-icon>credit_card</mat-icon>
-                  @if (income.salarySpouse) {
+                  @if (income.salary) {
                     <lib-text class="pl-2">
-                      salary {{ income.salarySpouse || '' | shortAmountOfMoney }}
+                      salary {{ income.salary || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
                   <mat-icon>payments</mat-icon>
-                  @if (income.pensionSpouse) {
+                  @if (income.pension) {
                     <lib-text class="pl-2">
-                      pension {{ income.pensionSpouse || '' | shortAmountOfMoney }}
+                      pension {{ income.pension || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
                   <mat-icon>account_balance</mat-icon>
-                  @if (income.depositSpouse) {
+                  @if (income.deposit) {
                     <lib-text class="pl-2">
-                      deposit {{ income.depositSpouse || '' | shortAmountOfMoney }}
+                      deposit {{ income.deposit || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
                   <mat-icon>topic</mat-icon>
-                  @if (income.otherSpouse) {
+                  @if (income.other) {
                     <lib-text class="pl-2">
-                      other {{ income.otherSpouse || '' | shortAmountOfMoney }}
+                      other {{ income.other || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
               </div>
-            }
+              @if (income.hasSpouse) {
+                <div>
+                  <div class="d-flex">
+                    <mat-icon>credit_card</mat-icon>
+                    @if (income.salarySpouse) {
+                      <lib-text class="pl-2">
+                        salary {{ income.salarySpouse || '' | shortAmountOfMoney }}
+                      </lib-text>
+                    }
+                  </div>
+                  <div class="d-flex">
+                    <mat-icon>payments</mat-icon>
+                    @if (income.pensionSpouse) {
+                      <lib-text class="pl-2">
+                        pension {{ income.pensionSpouse || '' | shortAmountOfMoney }}
+                      </lib-text>
+                    }
+                  </div>
+                  <div class="d-flex">
+                    <mat-icon>account_balance</mat-icon>
+                    @if (income.depositSpouse) {
+                      <lib-text class="pl-2">
+                        deposit {{ income.depositSpouse || '' | shortAmountOfMoney }}
+                      </lib-text>
+                    }
+                  </div>
+                  <div class="d-flex">
+                    <mat-icon>topic</mat-icon>
+                    @if (income.otherSpouse) {
+                      <lib-text class="pl-2">
+                        other {{ income.otherSpouse || '' | shortAmountOfMoney }}
+                      </lib-text>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
           </div>
-        </div>
-      </lib-card>
+        </lib-card>
+      }
     }
   </div>
 }

@@ -46,6 +46,10 @@ export class OverviewComponent implements OnInit {
     };
   }
 
+  public get incomeButtonName(): string {
+    return this.metadata?.income ? 'View all' : 'Add income scenario';
+  }
+
   public get profit(): string {
     const profit = Number(this.metadata?.income) - Number(this.metadata?.costOfLiving);
     return profit.toString();
