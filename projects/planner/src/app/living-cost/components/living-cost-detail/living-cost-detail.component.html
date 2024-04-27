@@ -1,0 +1,34 @@
+<form class="d-flex flex-column p-4" [formGroup]="livingCostDetailForm">
+  <div class="pb-3">
+    <h5>Total cost of living {{ totalLivingCost }}</h5>
+  </div>
+  <lib-input-wrapper [label]="'Mortgage'">
+    <input *libTextField formControlName="mortgage" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Rent'">
+    <input *libTextField formControlName="rent" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Loans'">
+    <input *libTextField formControlName="loans" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Utilities'">
+    <input *libTextField formControlName="utilities" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Education'">
+    <input *libTextField formControlName="education" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Markets'">
+    <input *libTextField formControlName="markets" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Transportation'">
+    <input *libTextField formControlName="transportation" />
+  </lib-input-wrapper>
+  <lib-input-wrapper [label]="'Other'">
+    <input *libTextField formControlName="other" />
+  </lib-input-wrapper>
+</form>
+
+<div class="px-4 pb-4 d-flex justify-content-around">
+  <lib-button type="tertiary" (click)="onCancel()">{{ 'Cancel' }}</lib-button>
+  <lib-button [isDisabled]="isSaveDisabled" (click)="onSave()">{{ 'Save' }}</lib-button>
+</div>

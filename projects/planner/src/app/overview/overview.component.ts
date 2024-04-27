@@ -50,6 +50,10 @@ export class OverviewComponent implements OnInit {
     return this.metadata?.income ? 'View all' : 'Add income scenario';
   }
 
+  public get livingCostButtonName(): string {
+    return this.metadata?.costOfLiving ? 'View all' : 'Add Cost of living scenario';
+  }
+
   public get profit(): string {
     const profit = Number(this.metadata?.income) - Number(this.metadata?.costOfLiving);
     return profit.toString();
@@ -58,6 +62,13 @@ export class OverviewComponent implements OnInit {
   public onViewIncome(): void {
     this.isLoading = true;
     this.router.navigate(['income']).finally(() => {
+      this.isLoading = false;
+    });
+  }
+
+  public onViewLivingCost(): void {
+    this.isLoading = true;
+    this.router.navigate(['livingcost']).finally(() => {
       this.isLoading = false;
     });
   }

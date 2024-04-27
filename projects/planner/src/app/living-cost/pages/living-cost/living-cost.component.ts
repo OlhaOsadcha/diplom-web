@@ -10,6 +10,7 @@ import { LivingCostModel } from '../../../shared/models/living-cost.model';
 import { PlannerService } from '../../../shared/services/planner.service';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs';
+import { LivingCostDetailComponent } from '../../components/living-cost-detail/living-cost-detail.component';
 
 const MODE = {
   New: 'new',
@@ -32,6 +33,7 @@ type Mode = ObjectValues<typeof MODE>;
     MatIcon,
     ShortAmountMoneyPipe,
     TextComponent,
+    LivingCostDetailComponent,
   ],
 })
 export class LivingCostComponent implements OnInit, OnDestroy {

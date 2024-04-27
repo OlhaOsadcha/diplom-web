@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { OverviewComponent } from './overview/overview.component';
 import { IncomeComponent } from './income/pages/income/income.component';
+import { LivingCostComponent } from './living-cost/pages/living-cost/living-cost.component';
 
 export const routes: Routes = [
   {
@@ -15,5 +16,9 @@ export const routes: Routes = [
   {
     path: 'income',
     component: IncomeComponent,
+  },
+  {
+    path: 'livingcost',
+    component: LivingCostComponent,
   },
 ];

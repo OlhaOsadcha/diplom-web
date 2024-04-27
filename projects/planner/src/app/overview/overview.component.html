@@ -45,7 +45,9 @@
 
         <div
           class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-          <lib-button type="secondary">View all</lib-button>
+          <lib-button type="secondary" (click)="onViewLivingCost()">{{
+            livingCostButtonName
+          }}</lib-button>
         </div>
       </div>
     </lib-card>
