@@ -5,6 +5,7 @@ import { MetadataModel } from '../models/metadata.model';
 import { PlannerService } from '../services/planner.service';
 import { IncomeModel } from '../models/income.model';
 import { v4 as uuid4 } from 'uuid';
+import { LivingCostModel } from '../models/living-cost.model';
 
 // const timeout = 2000;
 
@@ -12,6 +13,7 @@ import { v4 as uuid4 } from 'uuid';
 export class PlannerServiceMock extends PlannerService {
   private readonly timeout = 2000;
   private incomes: IncomeModel[] = [];
+  private livingCosts: LivingCostModel[] = [];
 
   constructor() {
     super({} as HttpClient);
@@ -66,5 +68,49 @@ export class PlannerServiceMock extends PlannerService {
     this.incomes = [...baseline, ...temp];
 
     return of(this.incomes).pipe(delay(this.timeout));
+  }
+
+  public override getLivingCost(): Observable<LivingCostModel[]> {
+    return of(this.livingCosts).pipe(delay(this.timeout));
+  }
+
+  public override createLivingCost(livingCost: LivingCostModel): Observable<LivingCostModel[]> {
+    const newLivingCost = this.livingCosts.length
+      ? livingCost
+      : { ...livingCost, isBaseline: true };
+    this.livingCosts = [...this.livingCosts, { ...newLivingCost, id: uuid4() }];
+    return of(this.livingCosts).pipe(delay(this.timeout));
+  }
+
+  public override updateLivingCost(livingCost: LivingCostModel): Observable<LivingCostModel[]> {
+    this.livingCosts = this.livingCosts.map(c => {
+      if (c.id === livingCost.id) {
+        return { ...c, ...livingCost };
+      }
+      return c;
+    });
+
+    return of(this.livingCosts).pipe(delay(this.timeout));
+  }
+
+  public override deleteLivingCost(id: string): Observable<LivingCostModel[]> {
+    this.livingCosts = this.livingCosts.filter(c => c.id !== id);
+    return of(this.livingCosts).pipe(delay(this.timeout));
+  }
+
+  public override setBaselineLivingCost(id: string): Observable<LivingCostModel[]> {
+    const baseline = this.livingCosts
+      .filter(c => c.id === id)
+      .map(c => {
+        return { ...c, isBaseline: true };
+      });
+    const temp = this.livingCosts
+      .filter(c => c.id !== id)
+      .map(c => {
+        return { ...c, isBaseline: false };
+      });
+    this.livingCosts = [...baseline, ...temp];
+
+    return of(this.livingCosts).pipe(delay(this.timeout));
   }
 }

@@ -7,6 +7,7 @@ import { v4 as uuid4 } from 'uuid';
 import { environment } from '../../../environments/environment';
 import { MetadataModel } from '../models/metadata.model';
 import { IncomeModel } from '../models/income.model';
+import { LivingCostModel } from '../models/living-cost.model';
 
 @Injectable()
 export class PlannerService {
@@ -56,5 +57,36 @@ export class PlannerService {
       this.getUrl(`income/${id}/baseline`),
       this.requestOptions({ isBaseline: true })
     ) as Observable<IncomeModel[]>;
+  }
+
+  public getLivingCost(): Observable<LivingCostModel[]> {
+    return this.http.get(this.getUrl('livingcost'), this.requestOptions()) as Observable<
+      LivingCostModel[]
+    >;
+  }
+
+  public createLivingCost(livingCost: LivingCostModel): Observable<LivingCostModel[]> {
+    return this.http.post(this.getUrl('livingcost'), this.requestOptions(livingCost)) as Observable<
+      LivingCostModel[]
+    >;
+  }
+
+  public updateLivingCost(livingCost: LivingCostModel): Observable<LivingCostModel[]> {
+    return this.http.put(this.getUrl('livingcost'), this.requestOptions(livingCost)) as Observable<
+      LivingCostModel[]
+    >;
+  }
+
+  public deleteLivingCost(id: string): Observable<LivingCostModel[]> {
+    return this.http.delete(this.getUrl(`livingcost/${id}`), this.requestOptions()) as Observable<
+      LivingCostModel[]
+    >;
+  }
+
+  public setBaselineLivingCost(id: string): Observable<LivingCostModel[]> {
+    return this.http.post(
+      this.getUrl(`livingcost/${id}/baseline`),
+      this.requestOptions({ isBaseline: true })
+    ) as Observable<LivingCostModel[]>;
   }
 }
