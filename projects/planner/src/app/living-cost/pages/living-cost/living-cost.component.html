@@ -56,58 +56,60 @@
             <div class="row">
               <div class="col-6">
                 <div class="d-flex">
-                  <mat-icon>credit_card</mat-icon>
+                  <mat-icon>house</mat-icon>
                   @if (livingCost.mortgage) {
                     <lib-text class="pl-2">
-                      salary {{ livingCost.mortgage || '' | shortAmountOfMoney }}
+                      mortgage {{ livingCost.mortgage || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
-                  <mat-icon>payments</mat-icon>
+                  <mat-icon>key</mat-icon>
                   @if (livingCost.rent) {
                     <lib-text class="pl-2">
-                      pension {{ livingCost.rent || '' | shortAmountOfMoney }}
+                      rent {{ livingCost.rent || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
-                  <mat-icon>account_balance</mat-icon>
+                  <mat-icon>money</mat-icon>
                   @if (livingCost.loans) {
                     <lib-text class="pl-2">
-                      deposit {{ livingCost.loans || '' | shortAmountOfMoney }}
+                      loans {{ livingCost.loans || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
-                  <mat-icon>topic</mat-icon>
+                  <mat-icon>document_scanner</mat-icon>
                   @if (livingCost.utilities) {
                     <lib-text class="pl-2">
-                      other {{ livingCost.utilities || '' | shortAmountOfMoney }}
+                      utilities {{ livingCost.utilities || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
+              </div>
+              <div>
                 <div class="d-flex">
-                  <mat-icon>topic</mat-icon>
+                  <mat-icon>cast_for_education</mat-icon>
                   @if (livingCost.education) {
                     <lib-text class="pl-2">
-                      other {{ livingCost.education || '' | shortAmountOfMoney }}
+                      education {{ livingCost.education || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
-                  <mat-icon>topic</mat-icon>
+                  <mat-icon>shopping_cart</mat-icon>
                   @if (livingCost.markets) {
                     <lib-text class="pl-2">
-                      other {{ livingCost.markets || '' | shortAmountOfMoney }}
+                      markets {{ livingCost.markets || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
                 <div class="d-flex">
-                  <mat-icon>topic</mat-icon>
+                  <mat-icon>emoji_transportation</mat-icon>
                   @if (livingCost.transportation) {
                     <lib-text class="pl-2">
-                      other {{ livingCost.transportation || '' | shortAmountOfMoney }}
+                      transportation {{ livingCost.transportation || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
