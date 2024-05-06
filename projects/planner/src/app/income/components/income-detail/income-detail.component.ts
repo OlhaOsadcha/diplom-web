@@ -74,9 +74,12 @@ export class IncomeDetailComponent implements OnInit {
     return this.myIncomeTotal ? ` ${this.myIncomeTotal}` : '';
   }
 
+  public get incomeTotal(): number {
+    return this.myIncomeTotal + this.incomeSpouseTotal;
+  }
+
   public get totalIncome(): string {
-    const totalIncome = this.myIncomeTotal + this.incomeSpouseTotal;
-    return totalIncome ? ` ${totalIncome}` : '';
+    return this.incomeTotal ? ` ${this.incomeTotal}` : '';
   }
 
   public get showSpouse(): boolean {
@@ -91,7 +94,7 @@ export class IncomeDetailComponent implements OnInit {
   public onSave(): void {
     const income = {
       id: this.incomeModelId,
-      total: this.totalIncome,
+      total: this.incomeTotal.toString(),
       salary: this.incomeDetailForm.get('salary')?.value,
       pension: this.incomeDetailForm.get('pension')?.value,
       deposit: this.incomeDetailForm.get('deposit')?.value,

@@ -60,7 +60,7 @@ export class LivingCostDetailComponent {
   public onSave(): void {
     const livingCost = {
       id: this.livingCostModelId,
-      total: this.totalLivingCost,
+      total: this.livingCostTotal.toString(),
       mortgage: this.livingCostDetailForm.get('mortgage')?.value,
       rent: this.livingCostDetailForm.get('rent')?.value,
       loans: this.livingCostDetailForm.get('loans')?.value,

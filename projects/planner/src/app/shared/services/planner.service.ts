@@ -35,13 +35,13 @@ export class PlannerService {
   }
 
   public createIncome(income: IncomeModel): Observable<IncomeModel[]> {
-    return this.http.post(this.getUrl('income'), this.requestOptions(income)) as Observable<
+    return this.http.post(this.getUrl('income'), income, this.requestOptions()) as Observable<
       IncomeModel[]
     >;
   }
 
   public updateIncome(income: IncomeModel): Observable<IncomeModel[]> {
-    return this.http.put(this.getUrl('income'), this.requestOptions(income)) as Observable<
+    return this.http.put(this.getUrl('income'), income, this.requestOptions()) as Observable<
       IncomeModel[]
     >;
   }
@@ -66,15 +66,19 @@ export class PlannerService {
   }
 
   public createLivingCost(livingCost: LivingCostModel): Observable<LivingCostModel[]> {
-    return this.http.post(this.getUrl('livingcost'), this.requestOptions(livingCost)) as Observable<
-      LivingCostModel[]
-    >;
+    return this.http.post(
+      this.getUrl('livingcost'),
+      livingCost,
+      this.requestOptions()
+    ) as Observable<LivingCostModel[]>;
   }
 
   public updateLivingCost(livingCost: LivingCostModel): Observable<LivingCostModel[]> {
-    return this.http.put(this.getUrl('livingcost'), this.requestOptions(livingCost)) as Observable<
-      LivingCostModel[]
-    >;
+    return this.http.put(
+      this.getUrl('livingcost'),
+      livingCost,
+      this.requestOptions()
+    ) as Observable<LivingCostModel[]>;
   }
 
   public deleteLivingCost(id: string): Observable<LivingCostModel[]> {
