@@ -22,6 +22,7 @@ import { IncomeModel } from '../../../shared/models/income.model';
 export class IncomeDetailComponent implements OnInit {
   @Input() public set incomeModel(incomeModel: IncomeModel | undefined) {
     this.incomeModelId = incomeModel?.id;
+    this.isBaseline = incomeModel?.isBaseline;
     this.initForm(incomeModel);
   }
   @Output() public cancel = new EventEmitter<void>();
@@ -29,6 +30,7 @@ export class IncomeDetailComponent implements OnInit {
 
   public incomeDetailForm!: UntypedFormGroup;
   private incomeModelId: string | undefined;
+  private isBaseline: boolean | undefined;
   constructor(private fb: UntypedFormBuilder) {}
 
   public ngOnInit(): void {
@@ -94,6 +96,7 @@ export class IncomeDetailComponent implements OnInit {
   public onSave(): void {
     const income = {
       id: this.incomeModelId,
+      isBaseline: this.isBaseline,
       total: this.incomeTotal.toString(),
       salary: this.incomeDetailForm.get('salary')?.value,
       pension: this.incomeDetailForm.get('pension')?.value,
@@ -105,6 +108,14 @@ export class IncomeDetailComponent implements OnInit {
       depositSpouse: this.incomeDetailForm.get('depositSpouse')?.value,
       otherSpouse: this.incomeDetailForm.get('otherSpouse')?.value,
     };
+
+    if (!income.hasSpouse) {
+      income.salarySpouse = '';
+      income.pensionSpouse = '';
+      income.depositSpouse = '';
+      income.otherSpouse = '';
+    }
+
     this.incomeDetailChange.emit(income);
     this.incomeDetailForm.reset();
   }
