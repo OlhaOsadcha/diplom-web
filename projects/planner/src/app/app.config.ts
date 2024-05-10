@@ -1,12 +1,13 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpBackend, HttpClientModule } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
-
-import { routes } from './app.routes';
-import { PlannerService } from './shared/services/planner.service';
-import { environment } from '../environments/environment';
-import { PlannerServiceMock } from './shared/mock/planner.service.mock';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { environment } from '../environments/environment';
+import { routes } from './app.routes';
+import { PlannerServiceMock } from './shared/mock/planner.service.mock';
+import { PlannerService } from './shared/services/planner.service';
+import { HttpLoaderFactory } from './shared/http-loader-factory/http-loader-factory';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +18,19 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       })
     ),
-    importProvidersFrom(HttpClientModule),
+    importProvidersFrom(
+      HttpClientModule,
+      TranslateModule.forRoot({
+        defaultLanguage: 'en-US',
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpBackend],
+        },
+        useDefaultLang: true,
+        isolate: false,
+      })
+    ),
     {
       provide: PlannerService,
       useClass: environment.mocked ? PlannerServiceMock : PlannerService,

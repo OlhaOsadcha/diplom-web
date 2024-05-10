@@ -10,6 +10,7 @@ import { CardHeaderComponent } from '../shared/components/card-header/card-heade
 import { MetadataModel } from '../shared/models/metadata.model';
 import { PlannerService } from '../shared/services/planner.service';
 import { ShortAmountMoneyPipe } from '../shared/pipes/short-amount-money.pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-overview',
@@ -22,6 +23,7 @@ import { ShortAmountMoneyPipe } from '../shared/pipes/short-amount-money.pipe';
     CardHeaderComponent,
     ButtonComponent,
     ShortAmountMoneyPipe,
+    TranslateModule,
   ],
 })
 export class OverviewComponent implements OnInit {

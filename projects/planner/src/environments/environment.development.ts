@@ -1,4 +1,4 @@
 export const environment = {
-  mocked: false,
+  mocked: true,
   apiEndpoint: 'http://localhost:5266',
 };

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ShellComponent } from 'components';
 
 @Component({
@@ -9,4 +10,8 @@ import { ShellComponent } from 'components';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private translateService: TranslateService) {
+    this.translateService.use(this.translateService.defaultLang);
+  }
+}
