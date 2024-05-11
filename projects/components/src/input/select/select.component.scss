@@ -1,0 +1,38 @@
+@import '../../_theme/colors';
+
+:host {
+  display: block;
+  background: white;
+
+  mat-select {
+    font-size: 1rem;
+    line-height: 3rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+    min-width: 7rem;
+    border: 1px solid $secondary-grey-400;
+    border-radius: 0.25rem;
+
+    &:focus,
+    &:hover {
+      border-color: $secondary-grey-900;
+    }
+  }
+}
+
+::ng-deep .mat-mdc-select-value {
+  padding-right: 0.5rem;
+}
+
+::ng-deep .mat-mdc-option-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: $primary-blue-500 !important;
+}
+
+::ng-deep.custom-cdk-overlay-select-panel {
+  transform: unset !important;
+  margin-left: calc(-12px - 0.15vw) !important;
+}
+
+::ng-deep .lib-select-panel[aria-multiselectable='false'] .mat-pseudo-checkbox {
+  display: none !important;
+}

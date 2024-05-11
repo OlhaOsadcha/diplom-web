@@ -9,3 +9,4 @@ export * from './button/button.component';
 export * from './shell/shell.service';
 export * from './shell/shell.component';
 export * from './text/text.component';
+export * from './input/select/select.component';
