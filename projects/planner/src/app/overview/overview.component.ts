@@ -72,11 +72,13 @@ export class OverviewComponent implements OnInit {
   }
 
   public get incomeButtonName(): string {
-    return this.metadata?.income ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_INCOME_SCENARIO';
+    return Number(this.metadata?.income) ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_INCOME_SCENARIO';
   }
 
   public get livingCostButtonName(): string {
-    return this.metadata?.costOfLiving ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_COST_OF_LIVING_SCENARIO';
+    return Number(this.metadata?.costOfLiving)
+      ? 'BUTTON_VIEW_ALL'
+      : 'BUTTON_ADD_COST_OF_LIVING_SCENARIO';
   }
 
   public get profit(): string {

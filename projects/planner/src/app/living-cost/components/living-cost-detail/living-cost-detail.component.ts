@@ -24,13 +24,16 @@ import { LivingCostModel } from '../../../shared/models/living-cost.model';
 export class LivingCostDetailComponent {
   @Input() public set livingCostModel(livingCostModel: LivingCostModel | undefined) {
     this.livingCostModelId = livingCostModel?.id;
+    this.isBaseline = livingCostModel?.isBaseline;
     this.initForm(livingCostModel);
   }
   @Output() public cancel = new EventEmitter<void>();
   @Output() public livingCostDetailChange = new EventEmitter<LivingCostModel>();
 
   public livingCostDetailForm!: UntypedFormGroup;
+  private isBaseline: boolean | undefined;
   private livingCostModelId: string | undefined;
+
   constructor(private fb: UntypedFormBuilder) {}
 
   public get isSaveDisabled(): boolean {
@@ -62,6 +65,7 @@ export class LivingCostDetailComponent {
   public onSave(): void {
     const livingCost = {
       id: this.livingCostModelId,
+      isBaseline: this.isBaseline,
       total: this.livingCostTotal.toString(),
       mortgage: this.livingCostDetailForm.get('mortgage')?.value,
       rent: this.livingCostDetailForm.get('rent')?.value,
