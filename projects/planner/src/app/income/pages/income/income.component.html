@@ -1,7 +1,7 @@
 <ng-template #actionBar>
   @if (incomes?.length) {
     <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()">
-      Add Income scenario
+      {{ 'BUTTON_ADD_INCOME_SCENARIO' | translate }}
     </lib-button>
   }
 </ng-template>
@@ -16,13 +16,15 @@
   <div class="d-block col-md-8 m-auto pt-3">
     @if (!incomes?.length) {
       <lib-card class="d-flex flex-column p-3 mt-5">
-        <app-card-header class="pb-3 bottom-border" [title]="'Income scenario'"></app-card-header>
+        <app-card-header
+          class="pb-3 bottom-border"
+          [title]="'CARD_HEADER_TITLE_INCOME' | translate"></app-card-header>
         <div class="pt-3 card-content">
           <div
             class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-            <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()"
-              >Add Income scenario</lib-button
-            >
+            <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddIncome()">{{
+              'BUTTON_ADD_INCOME_SCENARIO' | translate
+            }}</lib-button>
           </div>
         </div>
       </lib-card>
@@ -31,7 +33,7 @@
         <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateIncome(income)">
           <app-card-header
             class="pb-3 bottom-border"
-            [title]="'Income scenario'"
+            [title]="'CARD_HEADER_TITLE_INCOME' | translate"
             [chipConfig]="getChipConfig(income)">
             @if (getActionVisibility(income)) {
               <ng-container ngProjectAs="[action-bar]">
@@ -57,7 +59,7 @@
                   <mat-icon>credit_card</mat-icon>
                   @if (income.salary) {
                     <lib-text class="pl-2">
-                      salary {{ income.salary || '' | shortAmountOfMoney }}
+                      {{ 'SALARY' | translate }} {{ income.salary || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -65,7 +67,7 @@
                   <mat-icon>payments</mat-icon>
                   @if (income.pension) {
                     <lib-text class="pl-2">
-                      pension {{ income.pension || '' | shortAmountOfMoney }}
+                      {{ 'PENSION' | translate }} {{ income.pension || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -73,7 +75,7 @@
                   <mat-icon>account_balance</mat-icon>
                   @if (income.deposit) {
                     <lib-text class="pl-2">
-                      deposit {{ income.deposit || '' | shortAmountOfMoney }}
+                      {{ 'DEPOSIT' | translate }} {{ income.deposit || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -81,7 +83,7 @@
                   <mat-icon>topic</mat-icon>
                   @if (income.other) {
                     <lib-text class="pl-2">
-                      other {{ income.other || '' | shortAmountOfMoney }}
+                      {{ 'OTHER' | translate }} {{ income.other || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -92,7 +94,8 @@
                     <mat-icon>credit_card</mat-icon>
                     @if (income.salarySpouse) {
                       <lib-text class="pl-2">
-                        salary {{ income.salarySpouse || '' | shortAmountOfMoney }}
+                        {{ 'SALARY' | translate }}
+                        {{ income.salarySpouse || '' | shortAmountOfMoney }}
                       </lib-text>
                     }
                   </div>
@@ -100,7 +103,8 @@
                     <mat-icon>payments</mat-icon>
                     @if (income.pensionSpouse) {
                       <lib-text class="pl-2">
-                        pension {{ income.pensionSpouse || '' | shortAmountOfMoney }}
+                        {{ 'PENSION' | translate }}
+                        {{ income.pensionSpouse || '' | shortAmountOfMoney }}
                       </lib-text>
                     }
                   </div>
@@ -108,7 +112,8 @@
                     <mat-icon>account_balance</mat-icon>
                     @if (income.depositSpouse) {
                       <lib-text class="pl-2">
-                        deposit {{ income.depositSpouse || '' | shortAmountOfMoney }}
+                        {{ 'DEPOSIT' | translate }}
+                        {{ income.depositSpouse || '' | shortAmountOfMoney }}
                       </lib-text>
                     }
                   </div>
@@ -116,7 +121,8 @@
                     <mat-icon>topic</mat-icon>
                     @if (income.otherSpouse) {
                       <lib-text class="pl-2">
-                        other {{ income.otherSpouse || '' | shortAmountOfMoney }}
+                        {{ 'OTHER' | translate }}
+                        {{ income.otherSpouse || '' | shortAmountOfMoney }}
                       </lib-text>
                     }
                   </div>

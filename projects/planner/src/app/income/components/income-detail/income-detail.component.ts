@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { InputWrapperComponent } from '../../../../../../components/src/input/input-wrapper/input-wrapper.component';
 import { CheckboxComponent } from '../../../../../../components/src/input/checkbox/checkbox.component';
 import { ButtonComponent } from 'components';
@@ -17,6 +18,7 @@ import { IncomeModel } from '../../../shared/models/income.model';
     TextFieldDirective,
     ButtonComponent,
     ReactiveFormsModule,
+    TranslateModule,
   ],
 })
 export class IncomeDetailComponent implements OnInit {

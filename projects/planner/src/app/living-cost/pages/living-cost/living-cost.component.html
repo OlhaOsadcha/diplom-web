@@ -1,7 +1,7 @@
 <ng-template #actionBar>
   @if (livingCosts?.length) {
     <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddLivingCost()">
-      Add Cost of living scenario
+      {{ 'BUTTON_ADD_COST_OF_LIVING_SCENARIO' | translate }}
     </lib-button>
   }
 </ng-template>
@@ -18,13 +18,13 @@
       <lib-card class="d-flex flex-column p-3 mt-5">
         <app-card-header
           class="pb-3 bottom-border"
-          [title]="'Cost of living scenario'"></app-card-header>
+          [title]="'CARD_HEADER_TITLE_COST_OF_LIVING' | translate"></app-card-header>
         <div class="pt-3 card-content">
           <div
             class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
-            <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddLivingCost()"
-              >Add Cost of living scenario</lib-button
-            >
+            <lib-button type="secondary" [isDisabled]="isEditing" (click)="onAddLivingCost()">{{
+              'BUTTON_ADD_COST_OF_LIVING_SCENARIO' | translate
+            }}</lib-button>
           </div>
         </div>
       </lib-card>
@@ -33,7 +33,7 @@
         <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateLivingCost(livingCost)">
           <app-card-header
             class="pb-3 bottom-border"
-            [title]="'Income scenario'"
+            [title]="'CARD_HEADER_TITLE_COST_OF_LIVING' | translate"
             [chipConfig]="getChipConfig(livingCost)">
             @if (getActionVisibility(livingCost)) {
               <ng-container ngProjectAs="[action-bar]">
@@ -59,7 +59,8 @@
                   <mat-icon>house</mat-icon>
                   @if (livingCost.mortgage) {
                     <lib-text class="pl-2">
-                      mortgage {{ livingCost.mortgage || '' | shortAmountOfMoney }}
+                      {{ 'MORTGAGE' | translate }}
+                      {{ livingCost.mortgage || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -67,7 +68,7 @@
                   <mat-icon>key</mat-icon>
                   @if (livingCost.rent) {
                     <lib-text class="pl-2">
-                      rent {{ livingCost.rent || '' | shortAmountOfMoney }}
+                      {{ 'RENT' | translate }} {{ livingCost.rent || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -75,7 +76,7 @@
                   <mat-icon>money</mat-icon>
                   @if (livingCost.loans) {
                     <lib-text class="pl-2">
-                      loans {{ livingCost.loans || '' | shortAmountOfMoney }}
+                      {{ 'LOANS' | translate }} {{ livingCost.loans || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -83,7 +84,8 @@
                   <mat-icon>document_scanner</mat-icon>
                   @if (livingCost.utilities) {
                     <lib-text class="pl-2">
-                      utilities {{ livingCost.utilities || '' | shortAmountOfMoney }}
+                      {{ 'UTILITIES' | translate }}
+                      {{ livingCost.utilities || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -93,7 +95,8 @@
                   <mat-icon>cast_for_education</mat-icon>
                   @if (livingCost.education) {
                     <lib-text class="pl-2">
-                      education {{ livingCost.education || '' | shortAmountOfMoney }}
+                      {{ 'EDUCATION' | translate }}
+                      {{ livingCost.education || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -101,7 +104,8 @@
                   <mat-icon>shopping_cart</mat-icon>
                   @if (livingCost.markets) {
                     <lib-text class="pl-2">
-                      markets {{ livingCost.markets || '' | shortAmountOfMoney }}
+                      {{ 'MARKETS' | translate }}
+                      {{ livingCost.markets || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -109,7 +113,8 @@
                   <mat-icon>emoji_transportation</mat-icon>
                   @if (livingCost.transportation) {
                     <lib-text class="pl-2">
-                      transportation {{ livingCost.transportation || '' | shortAmountOfMoney }}
+                      {{ 'TRANSPORTATION' | translate }}
+                      {{ livingCost.transportation || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>
@@ -117,7 +122,7 @@
                   <mat-icon>topic</mat-icon>
                   @if (livingCost.other) {
                     <lib-text class="pl-2">
-                      other {{ livingCost.other || '' | shortAmountOfMoney }}
+                      {{ 'OTHER' | translate }} {{ livingCost.other || '' | shortAmountOfMoney }}
                     </lib-text>
                   }
                 </div>

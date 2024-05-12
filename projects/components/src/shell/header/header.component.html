@@ -5,7 +5,7 @@
     </button>
   }
   @if (headerTitle$ | async; as headerTitle) {
-    <lib-text [large]="true" [bold]="true">{{ headerTitle }}</lib-text>
+    <lib-text [large]="true" [bold]="true">{{ headerTitle | translate }}</lib-text>
   }
 </div>
 <div class="right-container">

@@ -1,34 +1,36 @@
 <form class="d-flex flex-column p-4" [formGroup]="livingCostDetailForm">
   <div class="pb-3">
-    <h5>Total cost of living {{ totalLivingCost }}</h5>
+    <h5>{{ 'TOTAL_COST_OF_LIVING' | translate }} {{ totalLivingCost }}</h5>
   </div>
-  <lib-input-wrapper [label]="'Mortgage'">
+  <lib-input-wrapper [label]="'MORTGAGE' | translate">
     <input *libTextField formControlName="mortgage" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Rent'">
+  <lib-input-wrapper [label]="'RENT' | translate">
     <input *libTextField formControlName="rent" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Loans'">
+  <lib-input-wrapper [label]="'LOANS' | translate">
     <input *libTextField formControlName="loans" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Utilities'">
+  <lib-input-wrapper [label]="'UTILITIES' | translate">
     <input *libTextField formControlName="utilities" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Education'">
+  <lib-input-wrapper [label]="'EDUCATION' | translate">
     <input *libTextField formControlName="education" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Markets'">
+  <lib-input-wrapper [label]="'MARKETS' | translate">
     <input *libTextField formControlName="markets" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Transportation'">
+  <lib-input-wrapper [label]="'TRANSPORTATION' | translate">
     <input *libTextField formControlName="transportation" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Other'">
+  <lib-input-wrapper [label]="'OTHER' | translate">
     <input *libTextField formControlName="other" />
   </lib-input-wrapper>
 </form>
 
 <div class="px-4 pb-4 d-flex justify-content-around">
-  <lib-button type="tertiary" (click)="onCancel()">{{ 'Cancel' }}</lib-button>
-  <lib-button [isDisabled]="isSaveDisabled" (click)="onSave()">{{ 'Save' }}</lib-button>
+  <lib-button type="tertiary" (click)="onCancel()">{{ 'BUTTON_CANCEL' | translate }}</lib-button>
+  <lib-button [isDisabled]="isSaveDisabled" (click)="onSave()">{{
+    'BUTTON_SAVE' | translate
+  }}</lib-button>
 </div>

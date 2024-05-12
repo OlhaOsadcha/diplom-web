@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Observable, Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 import { ShellService } from 'components';
 import { TextComponent } from '../../text/text.component';
 
@@ -19,6 +20,7 @@ import { TextComponent } from '../../text/text.component';
     MatIcon,
     TextComponent,
     NgTemplateOutlet,
+    TranslateModule,
   ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {

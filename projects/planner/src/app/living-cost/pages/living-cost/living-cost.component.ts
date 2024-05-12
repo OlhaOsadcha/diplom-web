@@ -1,16 +1,17 @@
-import { ObjectValues } from '../../../../../../components/src/utils/typescript-utils';
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ButtonComponent, CardComponent, LIB_COLOR, ShellService, TextComponent } from 'components';
-import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { IncomeDetailComponent } from '../../../income/components/income-detail/income-detail.component';
 import { MatIcon } from '@angular/material/icon';
-import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.pipe';
-import { LivingCostModel } from '../../../shared/models/living-cost.model';
-import { PlannerService } from '../../../shared/services/planner.service';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent, CardComponent, LIB_COLOR, ShellService, TextComponent } from 'components';
 import { LivingCostDetailComponent } from '../../components/living-cost-detail/living-cost-detail.component';
+import { IncomeDetailComponent } from '../../../income/components/income-detail/income-detail.component';
+import { ObjectValues } from '../../../../../../components/src/utils/typescript-utils';
+import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
+import { LivingCostModel } from '../../../shared/models/living-cost.model';
+import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.pipe';
+import { PlannerService } from '../../../shared/services/planner.service';
 
 const MODE = {
   New: 'new',
@@ -34,6 +35,7 @@ type Mode = ObjectValues<typeof MODE>;
     ShortAmountMoneyPipe,
     TextComponent,
     LivingCostDetailComponent,
+    TranslateModule,
   ],
 })
 export class LivingCostComponent implements OnInit, OnDestroy {
@@ -64,7 +66,7 @@ export class LivingCostComponent implements OnInit, OnDestroy {
 
   public getChipConfig(livingCost: LivingCostModel) {
     return livingCost.isBaseline
-      ? { displayString: 'Baseline', color: LIB_COLOR.accentGreen }
+      ? { displayString: 'BASELINE', color: LIB_COLOR.accentGreen }
       : undefined;
   }
 
@@ -158,7 +160,7 @@ export class LivingCostComponent implements OnInit, OnDestroy {
     this.shellService.headerConfig = {
       actionBarTemplate: this.actionBar,
       drawerTemplate: this.drawer,
-      headerTitle: 'Cost of living overview',
+      headerTitle: 'COST_OF_LIVING_PAGE_HEADER_TITLE',
       menuIcon: 'chevron_left',
       menuIconClickHandler: () => this.router.navigate(['overview']),
     };

@@ -1,45 +1,49 @@
 <form class="d-flex flex-column p-4" [formGroup]="incomeDetailForm">
   <div class="pb-3">
-    <h5>Total income {{ totalIncome }}</h5>
+    <h5>{{ 'TOTAL_INCOME' | translate }} {{ totalIncome }}</h5>
   </div>
   <div class="pb-3">
-    <h5>My income {{ myIncome }}</h5>
+    <h5>{{ 'MY_INCOME' | translate }} {{ myIncome }}</h5>
   </div>
-  <lib-input-wrapper [label]="'Salary'">
+  <lib-input-wrapper [label]="'SALARY' | translate">
     <input *libTextField formControlName="salary" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Pension'">
+  <lib-input-wrapper [label]="'PENSION' | translate">
     <input *libTextField formControlName="pension" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Deposit'">
+  <lib-input-wrapper [label]="'DEPOSIT' | translate">
     <input *libTextField formControlName="deposit" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Other'">
+  <lib-input-wrapper [label]="'OTHER' | translate">
     <input *libTextField formControlName="other" />
   </lib-input-wrapper>
-  <lib-input-wrapper [label]="'Spouse'">
-    <lib-checkbox formControlName="hasSpouse" [label]="'I have spouse'"></lib-checkbox>
+  <lib-input-wrapper [label]="'SPOUSE' | translate">
+    <lib-checkbox
+      formControlName="hasSpouse"
+      [label]="'HAS_SPOUSE_LABEL' | translate"></lib-checkbox>
   </lib-input-wrapper>
   @if (showSpouse) {
     <div class="pb-3">
-      <h5>Income of the spouse {{ incomeSpouse }}</h5>
+      <h5>{{ 'INCOME_OF_THE_SPOUSE' | translate }} {{ incomeSpouse }}</h5>
     </div>
-    <lib-input-wrapper [label]="'Salary'">
+    <lib-input-wrapper [label]="'SALARY' | translate">
       <input *libTextField formControlName="salarySpouse" />
     </lib-input-wrapper>
-    <lib-input-wrapper [label]="'Pension'">
+    <lib-input-wrapper [label]="'PENSION' | translate">
       <input *libTextField formControlName="pensionSpouse" />
     </lib-input-wrapper>
-    <lib-input-wrapper [label]="'Deposit'">
+    <lib-input-wrapper [label]="'DEPOSIT' | translate">
       <input *libTextField formControlName="depositSpouse" />
     </lib-input-wrapper>
-    <lib-input-wrapper [label]="'Other'">
+    <lib-input-wrapper [label]="'OTHER' | translate">
       <input *libTextField formControlName="otherSpouse" />
     </lib-input-wrapper>
   }
 </form>
 
 <div class="px-4 pb-4 d-flex justify-content-around">
-  <lib-button type="tertiary" (click)="onCancel()">{{ 'Cancel' }}</lib-button>
-  <lib-button [isDisabled]="isSaveDisabled" (click)="onSave()">{{ 'Save' }}</lib-button>
+  <lib-button type="tertiary" (click)="onCancel()">{{ 'BUTTON_CANCEL' | translate }}</lib-button>
+  <lib-button [isDisabled]="isSaveDisabled" (click)="onSave()">{{
+    'BUTTON_SAVE' | translate
+  }}</lib-button>
 </div>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from 'components';
 import { CheckboxComponent } from '../../../../../../components/src/input/checkbox/checkbox.component';
 import { InputWrapperComponent } from '../../../../../../components/src/input/input-wrapper/input-wrapper.component';
@@ -17,6 +18,7 @@ import { LivingCostModel } from '../../../shared/models/living-cost.model';
     TextFieldDirective,
     ButtonComponent,
     ReactiveFormsModule,
+    TranslateModule,
   ],
 })
 export class LivingCostDetailComponent {

@@ -66,17 +66,17 @@ export class OverviewComponent implements OnInit {
 
   public get chipConfig(): ChipConfig {
     return {
-      displayString: 'Baseline',
+      displayString: 'BASELINE',
       color: LIB_COLOR.accentGreen,
     };
   }
 
   public get incomeButtonName(): string {
-    return this.metadata?.income ? 'View all' : 'Add income scenario';
+    return this.metadata?.income ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_INCOME_SCENARIO';
   }
 
   public get livingCostButtonName(): string {
-    return this.metadata?.costOfLiving ? 'View all' : 'Add Cost of living scenario';
+    return this.metadata?.costOfLiving ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_COST_OF_LIVING_SCENARIO';
   }
 
   public get profit(): string {
@@ -114,16 +114,17 @@ export class OverviewComponent implements OnInit {
 
   private setHeaderConfig(): void {
     this.shellService.headerConfig = {
-      headerTitle: 'Baseline scenario overview',
+      headerTitle: 'OVERVIEW_PAGE_HEADER_TITLE',
       menuIcon: 'apps',
       actionBarTemplate: this.actionBar,
     };
   }
 
   private initLanguageFeature(): void {
-    const defaultLanguage = this.languageOptions[0];
-    this.languageFormControl.setValue(defaultLanguage.value);
-    this.selectedLanguage = defaultLanguage.label;
+    const defaultLanguage = this.languageOptions.find(
+      l => l.value === this.translateService.currentLang
+    );
+    this.selectedLanguage = defaultLanguage?.label || '';
     this.languageFormControl.valueChanges.pipe(takeUntilDestroyed(this.destroy)).subscribe({
       next: l => this.translateService.use(l),
     });

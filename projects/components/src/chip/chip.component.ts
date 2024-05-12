@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { LIB_COLOR, LibColor } from '../_theme/color.type';
 
 export interface ChipConfig {
@@ -11,10 +12,11 @@ export interface ChipConfig {
   templateUrl: 'chip.component.html',
   styleUrl: 'chip.component.scss',
   standalone: true,
+  imports: [TranslateModule],
 })
 export class ChipComponent implements OnInit {
   public chipColor: LibColor | undefined;
-  public displayString: string | undefined;
+  public displayString: string = '';
 
   @Input() set config(chipConfig: ChipConfig) {
     this.chipColor = chipConfig.color;

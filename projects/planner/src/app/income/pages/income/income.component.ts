@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs';
 import { ButtonComponent, CardComponent, LIB_COLOR, ShellService, TextComponent } from 'components';
-import { PlannerService } from '../../../shared/services/planner.service';
-import { IncomeModel } from '../../../shared/models/income.model';
-import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { TranslateModule } from '@ngx-translate/core';
 import { IncomeDetailComponent } from '../../components/income-detail/income-detail.component';
-import { MatIcon } from '@angular/material/icon';
-import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.pipe';
 import { ObjectValues } from '../../../../../../components/src/utils/typescript-utils';
+import { CardHeaderComponent } from '../../../shared/components/card-header/card-header.component';
+import { IncomeModel } from '../../../shared/models/income.model';
+import { PlannerService } from '../../../shared/services/planner.service';
+import { ShortAmountMoneyPipe } from '../../../shared/pipes/short-amount-money.pipe';
 
 const MODE = {
   New: 'new',
@@ -32,6 +33,7 @@ type Mode = ObjectValues<typeof MODE>;
     MatIcon,
     ShortAmountMoneyPipe,
     TextComponent,
+    TranslateModule,
   ],
 })
 export class IncomeComponent implements OnInit, OnDestroy {
@@ -62,7 +64,7 @@ export class IncomeComponent implements OnInit, OnDestroy {
 
   public getChipConfig(income: IncomeModel) {
     return income.isBaseline
-      ? { displayString: 'Baseline', color: LIB_COLOR.accentGreen }
+      ? { displayString: 'BASELINE', color: LIB_COLOR.accentGreen }
       : undefined;
   }
 
@@ -156,7 +158,7 @@ export class IncomeComponent implements OnInit, OnDestroy {
     this.shellService.headerConfig = {
       actionBarTemplate: this.actionBar,
       drawerTemplate: this.drawer,
-      headerTitle: 'Income overview',
+      headerTitle: 'INCOME_PAGE_HEADER_TITLE',
       menuIcon: 'chevron_left',
       menuIconClickHandler: () => this.router.navigate(['overview']),
     };
