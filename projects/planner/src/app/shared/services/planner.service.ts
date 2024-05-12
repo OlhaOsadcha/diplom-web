@@ -55,9 +55,9 @@ export class PlannerService {
   }
 
   public setBaselineIncome(id: string): Observable<IncomeModel[]> {
-    return this.http.post(
+    return this.http.patch(
       this.getUrl(`income/${id}/baseline`),
-      this.requestOptions({ isBaseline: true })
+      this.requestOptions()
     ) as Observable<IncomeModel[]>;
   }
 
@@ -90,9 +90,9 @@ export class PlannerService {
   }
 
   public setBaselineLivingCost(id: string): Observable<LivingCostModel[]> {
-    return this.http.post(
+    return this.http.patch(
       this.getUrl(`livingcost/${id}/baseline`),
-      this.requestOptions({ isBaseline: true })
+      this.requestOptions()
     ) as Observable<LivingCostModel[]>;
   }
 }
