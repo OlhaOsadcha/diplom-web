@@ -31,11 +31,15 @@
         [chipConfig]="chipConfig"></app-card-header>
       <div class="pt-3 card-content">
         <div>
-          <h2>{{ metadata?.income || '' | shortAmountOfMoney }}</h2>
+          <h2>{{ metadata?.income?.total || '' | shortAmountOfMoney }}</h2>
         </div>
 
+        @if (metadata?.income?.total) {
+          <app-income-chart [doughnutChart]="incomeDoughnutChart"></app-income-chart>
+        }
+
         <div
-          class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+          class="action-container d-flex ml-auto align-content-end flex-wrap justify-content-end">
           <lib-button type="secondary" (click)="onViewIncome()">{{
             incomeButtonName | translate
           }}</lib-button>
@@ -50,11 +54,15 @@
         [chipConfig]="chipConfig"></app-card-header>
       <div class="pt-3 card-content">
         <div>
-          <h2>{{ metadata?.costOfLiving || '' | shortAmountOfMoney }}</h2>
+          <h2>{{ metadata?.costOfLiving?.total || '' | shortAmountOfMoney }}</h2>
         </div>
 
+        @if (metadata?.costOfLiving?.total) {
+          <app-chart [doughnutChart]="costOfLivingDoughnutChart"></app-chart>
+        }
+
         <div
-          class="action-container d-flex ml-auto align-content-center flex-wrap justify-content-end">
+          class="action-container d-flex ml-auto align-content-end flex-wrap justify-content-end">
           <lib-button type="secondary" (click)="onViewLivingCost()">{{
             livingCostButtonName | translate
           }}</lib-button>

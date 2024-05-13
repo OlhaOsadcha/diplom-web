@@ -20,8 +20,8 @@ export class PlannerServiceMock extends PlannerService {
   }
 
   public override getMetadata(): Observable<MetadataModel> {
-    const incomeTotalBaseline = this.incomes.find(i => i.isBaseline)?.total;
-    const livingCostTotalBaseline = this.livingCosts.find(c => c.isBaseline)?.total;
+    const incomeTotalBaseline = this.incomes.find(i => i.isBaseline);
+    const livingCostTotalBaseline = this.livingCosts.find(c => c.isBaseline);
 
     return of({
       income: incomeTotalBaseline,

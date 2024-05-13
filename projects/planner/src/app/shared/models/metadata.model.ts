@@ -1,4 +1,7 @@
+import { IncomeModel } from './income.model';
+import { LivingCostModel } from './living-cost.model';
+
 export interface MetadataModel {
-  income?: string;
-  costOfLiving?: string;
+  income?: IncomeModel;
+  costOfLiving?: LivingCostModel;
 }

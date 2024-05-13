@@ -13,6 +13,9 @@ import { ShortAmountMoneyPipe } from '../shared/pipes/short-amount-money.pipe';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ChartComponent } from '../shared/components/chart/chart.component';
+import { DoughnutChartModel } from '../shared/models/doughnut-chart.model';
+import { IncomeChartComponent } from '../shared/components/income-chart/income-chart.component';
 
 @Component({
   selector: 'app-overview',
@@ -28,12 +31,17 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     TranslateModule,
     SelectComponent,
     ReactiveFormsModule,
+    ChartComponent,
+    ChartComponent,
+    IncomeChartComponent,
   ],
 })
 export class OverviewComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild('actionBar', { static: true }) public actionBar: TemplateRef<any> | undefined;
 
+  public costOfLivingDoughnutChart: DoughnutChartModel | undefined;
+  public incomeDoughnutChart: DoughnutChartModel | undefined;
   public isLoading: boolean | undefined;
   public metadata: MetadataModel | undefined;
   public languageFormControl = new FormControl();
@@ -72,17 +80,18 @@ export class OverviewComponent implements OnInit {
   }
 
   public get incomeButtonName(): string {
-    return Number(this.metadata?.income) ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_INCOME_SCENARIO';
+    return Number(this.metadata?.income?.total) ? 'BUTTON_VIEW_ALL' : 'BUTTON_ADD_INCOME_SCENARIO';
   }
 
   public get livingCostButtonName(): string {
-    return Number(this.metadata?.costOfLiving)
+    return Number(this.metadata?.costOfLiving?.total)
       ? 'BUTTON_VIEW_ALL'
       : 'BUTTON_ADD_COST_OF_LIVING_SCENARIO';
   }
 
   public get profit(): string {
-    const profit = Number(this.metadata?.income) - Number(this.metadata?.costOfLiving);
+    const profit =
+      Number(this.metadata?.income?.total) - Number(this.metadata?.costOfLiving?.total);
     return profit.toString();
   }
 
@@ -110,8 +119,106 @@ export class OverviewComponent implements OnInit {
         finalize(() => (this.isLoading = false))
       )
       .subscribe({
-        next: metadata => (this.metadata = metadata),
+        next: metadata => {
+          this.metadata = metadata;
+          this.setIncomeDoughnutChart();
+          this.setCostOfLivingDoughnutChart();
+        },
       });
+  }
+
+  private setCostOfLivingDoughnutChart(): void {
+    let labels: string[] = [];
+    let data: number[] = [];
+
+    if (this.metadata?.costOfLiving?.mortgage) {
+      labels = [...labels, this.translateService.instant('MORTGAGE')];
+      data = [...data, Number(this.metadata?.costOfLiving?.mortgage)];
+    }
+
+    if (this.metadata?.costOfLiving?.rent) {
+      labels = [...labels, this.translateService.instant('RENT')];
+      data = [...data, Number(this.metadata?.costOfLiving?.rent)];
+    }
+
+    if (this.metadata?.costOfLiving?.loans) {
+      labels = [...labels, this.translateService.instant('LOANS')];
+      data = [...data, Number(this.metadata?.costOfLiving?.loans)];
+    }
+
+    if (this.metadata?.costOfLiving?.utilities) {
+      labels = [...labels, this.translateService.instant('UTILITIES')];
+      data = [...data, Number(this.metadata?.costOfLiving?.utilities)];
+    }
+
+    if (this.metadata?.costOfLiving?.education) {
+      labels = [...labels, this.translateService.instant('EDUCATION')];
+      data = [...data, Number(this.metadata?.costOfLiving?.education)];
+    }
+
+    if (this.metadata?.costOfLiving?.markets) {
+      labels = [...labels, this.translateService.instant('MARKETS')];
+      data = [...data, Number(this.metadata?.costOfLiving?.markets)];
+    }
+
+    if (this.metadata?.costOfLiving?.transportation) {
+      labels = [...labels, this.translateService.instant('TRANSPORTATION')];
+      data = [...data, Number(this.metadata?.costOfLiving?.transportation)];
+    }
+
+    if (this.metadata?.costOfLiving?.other) {
+      labels = [...labels, this.translateService.instant('OTHER')];
+      data = [...data, Number(this.metadata?.costOfLiving?.other)];
+    }
+
+    this.costOfLivingDoughnutChart = { labels: labels, data: data };
+  }
+
+  private setIncomeDoughnutChart(): void {
+    let labels: string[] = [];
+    let data: number[] = [];
+
+    if (this.metadata?.income?.salary) {
+      labels = [...labels, this.translateService.instant('SALARY')];
+      data = [...data, Number(this.metadata?.income?.salary)];
+    }
+
+    if (this.metadata?.income?.pension) {
+      labels = [...labels, this.translateService.instant('PENSION')];
+      data = [...data, Number(this.metadata?.income?.pension)];
+    }
+
+    if (this.metadata?.income?.deposit) {
+      labels = [...labels, this.translateService.instant('DEPOSIT')];
+      data = [...data, Number(this.metadata?.income?.deposit)];
+    }
+
+    if (this.metadata?.income?.other) {
+      labels = [...labels, this.translateService.instant('OTHER')];
+      data = [...data, Number(this.metadata?.income?.other)];
+    }
+
+    if (this.metadata?.income?.salarySpouse) {
+      labels = [...labels, this.translateService.instant('SALARY') + '*'];
+      data = [...data, Number(this.metadata?.income?.salarySpouse)];
+    }
+
+    if (this.metadata?.income?.pensionSpouse) {
+      labels = [...labels, this.translateService.instant('PENSION') + '*'];
+      data = [...data, Number(this.metadata?.income?.pensionSpouse)];
+    }
+
+    if (this.metadata?.income?.depositSpouse) {
+      labels = [...labels, this.translateService.instant('DEPOSIT') + '*'];
+      data = [...data, Number(this.metadata?.income?.depositSpouse)];
+    }
+
+    if (this.metadata?.income?.otherSpouse) {
+      labels = [...labels, this.translateService.instant('OTHER') + '*'];
+      data = [...data, Number(this.metadata?.income?.otherSpouse)];
+    }
+
+    this.incomeDoughnutChart = { labels: labels, data: data };
   }
 
   private setHeaderConfig(): void {
