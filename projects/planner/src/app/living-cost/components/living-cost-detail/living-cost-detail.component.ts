@@ -66,6 +66,7 @@ export class LivingCostDetailComponent {
     const livingCost = {
       id: this.livingCostModelId,
       isBaseline: this.isBaseline,
+      year: this.livingCostDetailForm.get('year')?.value,
       total: this.livingCostTotal.toString(),
       mortgage: this.livingCostDetailForm.get('mortgage')?.value,
       rent: this.livingCostDetailForm.get('rent')?.value,
@@ -82,6 +83,7 @@ export class LivingCostDetailComponent {
 
   private initForm(livingCostModel?: LivingCostModel): void {
     this.livingCostDetailForm = this.fb.group({
+      year: [livingCostModel?.year || ''],
       mortgage: [livingCostModel?.mortgage || ''],
       rent: [livingCostModel?.rent || ''],
       loans: [livingCostModel?.loans || ''],

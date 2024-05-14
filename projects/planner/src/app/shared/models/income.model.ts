@@ -1,6 +1,7 @@
 export interface IncomeModel {
   id?: string;
   isBaseline?: boolean;
+  year?: string;
   total?: string;
   salary?: string;
   pension?: string;

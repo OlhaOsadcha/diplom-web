@@ -33,7 +33,7 @@
         <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateIncome(income)">
           <app-card-header
             class="pb-3 bottom-border"
-            [title]="'CARD_HEADER_TITLE_INCOME' | translate"
+            [title]="('CARD_HEADER_TITLE_INCOME' | translate) + ' ' + (income.year || '')"
             [chipConfig]="getChipConfig(income)">
             @if (getActionVisibility(income)) {
               <ng-container ngProjectAs="[action-bar]">

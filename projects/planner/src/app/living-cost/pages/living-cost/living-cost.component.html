@@ -33,7 +33,9 @@
         <lib-card class="d-flex flex-column p-3 mt-5" (click)="onUpdateLivingCost(livingCost)">
           <app-card-header
             class="pb-3 bottom-border"
-            [title]="'CARD_HEADER_TITLE_COST_OF_LIVING' | translate"
+            [title]="
+              ('CARD_HEADER_TITLE_COST_OF_LIVING' | translate) + ' ' + (livingCost.year || '')
+            "
             [chipConfig]="getChipConfig(livingCost)">
             @if (getActionVisibility(livingCost)) {
               <ng-container ngProjectAs="[action-bar]">

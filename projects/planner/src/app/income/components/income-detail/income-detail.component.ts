@@ -99,6 +99,7 @@ export class IncomeDetailComponent implements OnInit {
     const income = {
       id: this.incomeModelId,
       isBaseline: this.isBaseline,
+      year: this.incomeDetailForm.get('year')?.value,
       total: this.incomeTotal.toString(),
       salary: this.incomeDetailForm.get('salary')?.value,
       pension: this.incomeDetailForm.get('pension')?.value,
@@ -124,6 +125,7 @@ export class IncomeDetailComponent implements OnInit {
 
   private initForm(income?: IncomeModel): void {
     this.incomeDetailForm = this.fb.group({
+      year: [income?.year || ''],
       salary: [income?.salary || ''],
       pension: [income?.pension || ''],
       deposit: [income?.deposit || ''],

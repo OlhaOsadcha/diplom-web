@@ -1,6 +1,7 @@
 export interface LivingCostModel {
   id?: string;
   isBaseline?: boolean;
+  year?: string;
   total?: string;
   mortgage?: string;
   rent?: string;
