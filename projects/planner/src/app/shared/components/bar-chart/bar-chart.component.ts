@@ -26,11 +26,14 @@ export class BarChartComponent implements OnInit {
             indexAxis: 'y',
             label: '',
             data: this.data,
+            maxBarThickness: 20,
             backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)'],
           },
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false,
