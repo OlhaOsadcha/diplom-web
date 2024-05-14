@@ -22,6 +22,10 @@
       <div class="pt-3">
         <h1>{{ profit || '' | shortAmountOfMoney }}</h1>
       </div>
+
+      @if (metadata?.income?.total && metadata?.costOfLiving?.total) {
+        <app-bar-chart [labels]="profitLabels" [data]="profitData"></app-bar-chart>
+      }
     </lib-card>
 
     <lib-card class="d-flex flex-column p-3 mt-5">

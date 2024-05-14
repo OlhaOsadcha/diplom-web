@@ -16,6 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ChartComponent } from '../shared/components/chart/chart.component';
 import { DoughnutChartModel } from '../shared/models/doughnut-chart.model';
 import { IncomeChartComponent } from '../shared/components/income-chart/income-chart.component';
+import { BarChartComponent } from '../shared/components/bar-chart/bar-chart.component';
 
 @Component({
   selector: 'app-overview',
@@ -34,6 +35,7 @@ import { IncomeChartComponent } from '../shared/components/income-chart/income-c
     ChartComponent,
     ChartComponent,
     IncomeChartComponent,
+    BarChartComponent,
   ],
 })
 export class OverviewComponent implements OnInit {
@@ -93,6 +95,17 @@ export class OverviewComponent implements OnInit {
     const profit =
       Number(this.metadata?.income?.total) - Number(this.metadata?.costOfLiving?.total);
     return profit.toString();
+  }
+
+  public get profitLabels(): string[] {
+    return [
+      this.translateService.instant('INCOME_SCENARIO'),
+      this.translateService.instant('COST_OF_LIVING_SCENARIO'),
+    ];
+  }
+
+  public get profitData(): number[] {
+    return [Number(this.metadata?.income?.total), Number(this.metadata?.costOfLiving?.total)];
   }
 
   public onViewIncome(): void {
